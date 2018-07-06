@@ -1,6 +1,8 @@
 # Savvy Sapian
 
 * **Savvy Sapian is a location-based game that rewards adventurous arts lovers** 
+- Savvy Sapian is inspired by Pokemon-Go. My goal is to give people the same feeling of light-hearted exploration when visiting cultural events in NYC. Players will gain points for participating in art and culture events in NYC. Participation will be tracked by geolocation. Top players will be ranked and eventually will be rewarded with private events where they can meet artists, meet other engaged users, win free tickets to events, or win art etc.
+---
 
 * **User Stories** 
 As an arts-lover I want to plan and track my cultural adventures.
@@ -14,11 +16,6 @@ I plan to include User comments and OAuth.
 
 * **Heroku Deployment** Will do.
 
----
-
-## Description
-- Savvy Sapian is inspired by Pokemon-Go. My goal is to give people the same feeling of light-hearted exploration when visiting cultural events in NYC. Players will gain points for participating in art and culture events in NYC. Participation will be tracked by geolocation. Top players will be ranked and eventually will be rewarded with private events where they can meet artists, meet other engaged users, win free tickets to events, or win art etc.
-
 ## MVP
 - The MVP will have user authentication for players. It will allow players to find and save their favorite events.
 
@@ -28,6 +25,7 @@ I plan to include User comments and OAuth.
 ## Reach Goals
 - MeetUp and GoogleCalendar API integration.
 - Event notifications as a React Native app.
+- Socket.io chat feature in event page so players can interact.
 
 ## Timeline(s)
 - MVP timeline is one week. Reach Goal is 6 months.
