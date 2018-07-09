@@ -8,7 +8,7 @@ traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
 
 api.newRequest()
-  .follow('artist')
+  .follow('search')
   .withRequestOptions({
     headers: {
       'X-Xapp-Token': xappToken,
@@ -16,10 +16,15 @@ api.newRequest()
     }
   })
   .withTemplateParameters({
-    id: 'andy-warhol'
+    q: 'Manet'
   })
-  .getResource(function (error, andyWarhol) {
-    console.log(andyWarhol.name + ' was born in ' + andyWarhol.birthday + ' in ' + andyWarhol.hometown);
+  .getResource(function (error, data) {
+    if (error) {
+      console.log('Sorry, not found');      
+    } else {
+    console.log(data._embedded.results[0]._links.permalink.href)
+    // console.log(JSON.stringify(data))
+   }
   });
 
 class LandingPage extends Component {
@@ -30,21 +35,21 @@ class LandingPage extends Component {
       };
   }
 
-  componentDidMount(){
-    fetch('https://api.artsy.net/api')
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      console.log(json);      
-      const links = json.filter(link => {
-        return link;
-      })
-      this.setState({
-        links,
-      });
-    });
-  }
+  // componentDidMount(){
+  //   fetch('https://api.artsy.net/api')
+  //   .then(response => {
+  //     return response.json();
+  //   })
+  //   .then(json => {
+  //     console.log(json);      
+  //     const links = json.filter(link => {
+  //       return link;
+  //     })
+  //     this.setState({
+  //       links,
+  //     });
+  //   });
+  // }
 
   render() {
     return (
