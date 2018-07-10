@@ -74,6 +74,7 @@ componentWillMount(){
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
+            visit={result._links.permalink.href}
           />
 
           )

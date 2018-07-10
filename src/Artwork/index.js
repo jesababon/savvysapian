@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 
-
 class Artwork extends Component {
     render(){
         return(
         <div className="Artwork">
             <p>Title: {this.props.title}</p>
             <p>Type: {this.props.type}</p>
-            <p><img src={this.props.image} alt='/missing_image.png' /></p>
+            <p>
+                <a href={this.props.visit}>
+                <img src={this.props.image} alt=''/>
+                </a>
+                </p>
         </div>
         )
     }
