@@ -23,7 +23,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      results: []
+      results: [],
+      next: ''
     };
   }
 
@@ -42,12 +43,13 @@ componentWillMount(){
     })
     .getResource(function (error, data) {
       const results = data._embedded.results;
-      console.log(results)
+      const next = data._links.next.href; //returns the next json array
       if (error) {
         console.log('Sorry, not found');
       } else {
         currentComponent.setState({
-          results: results
+          results: results,
+          next: next
         });
       }
     })
@@ -58,21 +60,28 @@ componentWillMount(){
 
     return (
     <Router>
+
       <div className="App">
         <h1>Savvy?</h1>
-        <p>{console.log(this.state.results)}</p>
-        
-        <p>{this.state.results.map(result => {
-          return <Artwork 
-            title={result.title}
-            description={result.description}
-          />
-        })}
-        </p>
-
         <nav>
         <Link to = "/"> Home </Link>
         </nav>
+        {console.log(this.state.results)}
+        
+        <p>{this.state.results.map((result, index) => {
+          return (
+          <Artwork key={index}
+            title={result.title}
+            type={result.type}
+            image={result._links.thumbnail.href}
+          />
+
+          )
+        })}
+        </p>
+
+        <p>{this.state.next}
+        </p>
         <Route path="/" exact component={LandingPage}/>
       </div>
     </Router>
