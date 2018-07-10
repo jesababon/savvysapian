@@ -4,7 +4,6 @@ class Artwork extends Component {
     render(){
         return(
         <div className="Artwork">
-            <h3>{this.props.type}</h3>
             <p>Title: {this.props.title}</p>
             <p>Desc: {this.props.description}</p>
         </div>

@@ -8,9 +8,12 @@ const app = express();
 // const clientID = 'c39df3182a7eba954ad3'
 // const clientSecret = '9e5fcd95d176de1a37fc440eea9a1c0f'
 
+const traverson = require('traverson');
+const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
 const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
 
-const url = 'https://api.artsy.net/api';
+traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
+const url = traverson.from('https://api.artsy.net/api').jsonHal();
 
 // Static hosting for built files
 app.use("/", express.static("./build/static"));

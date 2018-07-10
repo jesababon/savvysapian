@@ -27,8 +27,9 @@ class App extends Component {
     };
   }
 
-componenDidMount(){
-return api.newRequest()
+componentWillMount(){
+  let currentComponent = this;
+ api.newRequest()
     .follow('search')
     .withRequestOptions({
       headers: {
@@ -45,9 +46,9 @@ return api.newRequest()
       if (error) {
         console.log('Sorry, not found');
       } else {
-        this.setState({
+        currentComponent.setState({
           results: results
-        }.bind(this));
+        });
       }
     })
   }
@@ -59,13 +60,15 @@ return api.newRequest()
     <Router>
       <div className="App">
         <h1>Savvy?</h1>
-        {this.state.results.map(result => {
-          console.log(result)
+        <p>{console.log(this.state.results)}</p>
+        
+        <p>{this.state.results.map(result => {
           return <Artwork 
             title={result.title}
             description={result.description}
           />
         })}
+        </p>
 
         <nav>
         <Link to = "/"> Home </Link>
