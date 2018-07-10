@@ -80,7 +80,7 @@ componentWillMount(){
         })}
         </p>
 
-        <p>{this.state.next}
+        <p><a href={this.state.next}>Next</a>
         </p>
         <Route path="/" exact component={LandingPage}/>
       </div>
