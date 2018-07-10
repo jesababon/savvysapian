@@ -1,14 +1,57 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
-import LandingPage from "../Landing Page";
+import LandingPage from "../LandingPage";
+const traverson = require('traverson');
+const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
+const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
+
+traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
+const api = traverson.from('https://api.artsy.net/api').jsonHal();
+
+//search for anything console.log(data._embedded.results[0]._links.permalink.href)
+// console.log(JSON.stringify(data))
+//met only https://api.artsy.net/api/artworks?partner_id=52e9639bc9dc24eff7000103
+// data._embedded.results ➡(map) type(artist, show or article)
+//get self json ➡(map) _links.self.href)
+//; thumbnail ➡ (map) _links.thumbnail.href)
 
 class App extends Component {
   render() {
+    const artsy = api.newRequest()
+      .follow('search')
+      .withRequestOptions({
+        headers: {
+          'X-Xapp-Token': xappToken,
+          'Accept': 'application/vnd.artsy-v2+json'
+        }
+      })
+      .withTemplateParameters({
+        q: 'seuss'
+      })
+      .getResource(function (error, data) {
+        if (error) {
+          console.log('Sorry, not found');
+        } else {
+          const results = data._embedded.results;
+          console.log(results);
+          // const next = data._links.next.href; //returns the next json array
+          return results;
+        }
+      });
+
     return (
+    <Router>
     <div className="App">
-    <p>Hello World</p>
-    <LandingPage />
+    <h1>Savvy?</h1>
+    <p>{console.log(artsy.results)}</p>
+
+    <nav>
+    <Link to = "/"> Home </Link>
+    </nav>
+    <Route path="/" exact component={LandingPage}/>
     </div>
+    </Router>
     );
   }
 }
