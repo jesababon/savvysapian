@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
 import LandingPage from "../LandingPage";
+import Artwork from "../Artwork";
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
 const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
@@ -15,42 +16,62 @@ const api = traverson.from('https://api.artsy.net/api').jsonHal();
 // data._embedded.results ➡(map) type(artist, show or article)
 //get self json ➡(map) _links.self.href)
 //; thumbnail ➡ (map) _links.thumbnail.href)
+// const next = data._links.next.href; //returns the next json array
+// return results;
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      results: []
+    };
+  }
+
+componenDidMount(){
+return api.newRequest()
+    .follow('search')
+    .withRequestOptions({
+      headers: {
+        'X-Xapp-Token': xappToken,
+        'Accept': 'application/vnd.artsy-v2+json'
+      }
+    })
+    .withTemplateParameters({
+      q: 'frida'
+    })
+    .getResource(function (error, data) {
+      const results = data._embedded.results;
+      console.log(results)
+      if (error) {
+        console.log('Sorry, not found');
+      } else {
+        this.setState({
+          results: results
+        }.bind(this));
+      }
+    })
+  }
+
+
   render() {
-    const artsy = api.newRequest()
-      .follow('search')
-      .withRequestOptions({
-        headers: {
-          'X-Xapp-Token': xappToken,
-          'Accept': 'application/vnd.artsy-v2+json'
-        }
-      })
-      .withTemplateParameters({
-        q: 'seuss'
-      })
-      .getResource(function (error, data) {
-        if (error) {
-          console.log('Sorry, not found');
-        } else {
-          const results = data._embedded.results;
-          console.log(results);
-          // const next = data._links.next.href; //returns the next json array
-          return results;
-        }
-      });
 
     return (
     <Router>
-    <div className="App">
-    <h1>Savvy?</h1>
-    <p>{console.log(artsy.results)}</p>
+      <div className="App">
+        <h1>Savvy?</h1>
+        {this.state.results.map(result => {
+          console.log(result)
+          return <Artwork 
+            title={result.title}
+            description={result.description}
+          />
+        })}
 
-    <nav>
-    <Link to = "/"> Home </Link>
-    </nav>
-    <Route path="/" exact component={LandingPage}/>
-    </div>
+        <nav>
+        <Link to = "/"> Home </Link>
+        </nav>
+        <Route path="/" exact component={LandingPage}/>
+      </div>
     </Router>
     );
   }
