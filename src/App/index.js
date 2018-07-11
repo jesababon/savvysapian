@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
 import LandingPage from "../LandingPage";
+import Artist from "../Artist";
 import Artwork from "../Artwork";
 import Show from "../Show";
 const traverson = require('traverson');
@@ -40,7 +41,7 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'impressionist'
+      q: 'kehinde'
     })
     .getResource(function (error, data) {
       const results = data._embedded.results;
@@ -71,11 +72,13 @@ componentWillMount(){
         
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "artist") {
-            return (<Artwork key={index}
+            //add artist rendering
+            return (<Artist key={index}
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
-            visit={result._links.permalink.href}
+            visit={result._links.self.href}
+            //artist json: https://api.artsy.net/api/artists/4ed901b755a41e0001000a9f
           />)
           }
           else if (result.type === "show") {
@@ -84,12 +87,20 @@ componentWillMount(){
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
+            visit={result._links.self.href}
+          />)
+            } 
+            else if (result.type === "artwork") {
+            //add artwork rendering
+          return (<Artwork key={index}
+            title={result.title}
+            type={result.type}
+            image={result._links.thumbnail.href}
             visit={result._links.permalink.href}
           />)
             } 
           else {
-              console.log(`no results for ${result.type}`);
-              <p> Sorry, No results for this search. </p>
+              return console.log(`Not rendering ${result.type}s`);
             }
         })}
         </div>
