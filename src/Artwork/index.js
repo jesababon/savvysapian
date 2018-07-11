@@ -4,8 +4,8 @@ class Artwork extends Component {
     render(){
         return(
         <div className="Artwork">
+            <p>Artwork</p>
             <p>Title: {this.props.title}</p>
-            <p>Type: {this.props.type}</p>
             <p>
                 <a href={this.props.visit}>
                 <img src={this.props.image} alt=''/>

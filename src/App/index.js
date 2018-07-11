@@ -47,9 +47,11 @@ componentWillMount(){
     })
     .getResource(function (error, data) {
       const shows= data._embedded.results.map( result =>{
-        if(result.type === 'show' && result.title !== undefined){
+        if(result.type === 'show'){
         return result._links.self.href}
+        return shows;
       });
+      // console.log(shows);
       
       const results = data._embedded.results;
       const next = data._links.next.href; //returns the next json array
@@ -66,42 +68,44 @@ componentWillMount(){
     })
   }
 
-    componentDidMount() {
-        let currentComponent = this; 
+    // componentDidMount() {
+    //     let currentComponent = this; 
+    //     console.log(currentComponent);
         
-        const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
+        
+    //     const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
 
-        // let showTitle = '';
-        // console.log('show is titled:', showTitle);
-        showsApi.newRequest()
-          // .follow('shows')
-          .withRequestOptions({
-            headers: {
-              'X-Xapp-Token': xappToken,
-              'Accept': 'application/vnd.artsy-v2+json'
-            }
-          })
-          // .withTemplateParameters({
-          //   id: '5908d4d1139b21635fae5778',
-          // })
-          .getResource(function (error, data) {
-            console.log('shows data:', data);
+    //     // let showTitle = '';
+    //     // console.log('show is titled:', showTitle);
+    //     showsApi.newRequest()
+    //       // .follow('shows')
+    //       .withRequestOptions({
+    //         headers: {
+    //           'X-Xapp-Token': xappToken,
+    //           'Accept': 'application/vnd.artsy-v2+json'
+    //         }
+    //       })
+    //       // .withTemplateParameters({
+    //       //   id: '5908d4d1139b21635fae5778',
+    //       // })
+    //       .getResource(function (error, data) {
+    //         // console.log('shows data:', data);
 
-            const dataId = data.id
-            if (dataId === '5908d4d1139b21635fae5778') {
-              return dataId
-            }
+    //         const dataId = data.id
+    //         if (dataId === '5908d4d1139b21635fae5778') {
+    //           return dataId
+    //         }
 
-            const shows = dataId;            
-            if (error) {
-              console.log('Sorry, no shows found');
-            } else {
-              currentComponent.setState({
-                shows: shows
-              });
-            }
-          })
-        }
+    //         const shows = dataId;            
+    //         if (error) {
+    //           console.log('Sorry, no shows found');
+    //         } else {
+    //           currentComponent.setState({
+    //             shows: shows
+    //           });
+    //         }
+    //       })
+    //     }
 
 
 
@@ -115,8 +119,8 @@ componentWillMount(){
         <nav>
         <Link to = "/"> Home </Link>
         </nav>
-        {console.log(this.state.results)}
-        {console.log('shows in state', this.state.shows)}
+        {/* {console.log(this.state.results)} */}
+        {/* {console.log('shows in state', this.state.shows)} */}
         
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           // if (result.type === "show") {
@@ -149,21 +153,32 @@ componentWillMount(){
               visit={result._links.permalink.href}
             />)
             } 
-            else if (result.type === "show") {
-            //add artwork rendering
-            return (
-            <Show key={index}
-              title={result.title}
-              type={result.type}
-              image={result._links.thumbnail.href}
-              visit={result._links.permalink.href}
-            />)
-            } 
-            // else {
-            //   return console.log(`Not rendering ${result.type}s`);
-            // }
+            // else if (result.type === "show") {
+            // //add artwork rendering
+            // return (
+            // <Show key={index}
+            //   title={result.title}
+            //   type={result.type}
+            //   image={result._links.thumbnail.href}
+            //   visit={result._links.permalink.href}
+            // />)
+            // } 
+            else {
+              return console.log(`Not rendering ${result.type}s in this module`);
+            }
         })}
         </div>
+            <div className='ShowsResults'>
+            {this.state.shows.map((show, index) => {
+              console.log(show);
+              if (show !== undefined) {
+                return <Show key={index}
+              showUrl={show} />
+              }else{
+                return ''
+              }
+            })}
+            </div>
 
         <p><a href={this.state.next}>Next</a>
         </p>
