@@ -11,7 +11,6 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
-const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
 
 
 //search for anything console.log(data._embedded.results[0]._links.permalink.href)
@@ -47,6 +46,11 @@ componentWillMount(){
       q: 'kehinde'
     })
     .getResource(function (error, data) {
+      const shows= data._embedded.results.map( result =>{
+        if(result.type === 'show' && result.title !== undefined){
+        return result._links.self.href}
+      });
+      
       const results = data._embedded.results;
       const next = data._links.next.href; //returns the next json array
       // const showLink = data._embedded.results._links.self.href
@@ -55,8 +59,8 @@ componentWillMount(){
       } else {
         currentComponent.setState({
           results: results,
-          next: next
-          // showLink: showLink
+          next: next,
+          shows: shows
         });
       }
     })
@@ -64,6 +68,9 @@ componentWillMount(){
 
     componentDidMount() {
         let currentComponent = this; 
+        
+        const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
+
         // let showTitle = '';
         // console.log('show is titled:', showTitle);
         showsApi.newRequest()
@@ -80,7 +87,7 @@ componentWillMount(){
           .getResource(function (error, data) {
             console.log('shows data:', data);
 
-            const dataId = data._embedded.shows.id
+            const dataId = data.id
             if (dataId === '5908d4d1139b21635fae5778') {
               return dataId
             }
@@ -109,6 +116,7 @@ componentWillMount(){
         <Link to = "/"> Home </Link>
         </nav>
         {console.log(this.state.results)}
+        {console.log('shows in state', this.state.shows)}
         
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           // if (result.type === "show") {
