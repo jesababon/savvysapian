@@ -11,6 +11,8 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
+const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
+
 
 //search for anything console.log(data._embedded.results[0]._links.permalink.href)
 // console.log(JSON.stringify(data))
@@ -26,7 +28,8 @@ class App extends Component {
     super(props);
     this.state = {
       results: [],
-      next: ''
+      next: '',
+      shows: []
     };
   }
 
@@ -46,16 +49,53 @@ componentWillMount(){
     .getResource(function (error, data) {
       const results = data._embedded.results;
       const next = data._links.next.href; //returns the next json array
+      // const showLink = data._embedded.results._links.self.href
       if (error) {
         console.log('Sorry, not found');
       } else {
         currentComponent.setState({
           results: results,
           next: next
+          // showLink: showLink
         });
       }
     })
   }
+
+    componentDidMount() {
+        let currentComponent = this; 
+        // let showTitle = '';
+        // console.log('show is titled:', showTitle);
+        showsApi.newRequest()
+          // .follow('shows')
+          .withRequestOptions({
+            headers: {
+              'X-Xapp-Token': xappToken,
+              'Accept': 'application/vnd.artsy-v2+json'
+            }
+          })
+          // .withTemplateParameters({
+          //   id: '5908d4d1139b21635fae5778',
+          // })
+          .getResource(function (error, data) {
+            console.log('shows data:', data);
+
+            const dataId = data._embedded.shows.id
+            if (dataId === '5908d4d1139b21635fae5778') {
+              return dataId
+            }
+
+            const shows = dataId;            
+            if (error) {
+              console.log('Sorry, no shows found');
+            } else {
+              currentComponent.setState({
+                shows: shows
+              });
+            }
+          })
+        }
+
 
 
   render() {
@@ -71,37 +111,49 @@ componentWillMount(){
         {console.log(this.state.results)}
         
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
+          // if (result.type === "show") {
+          //   const showLink= result._links.self.href
+          //   console.log(showLink);
+            
+          //   return showLink
+          // }
+          //closed shows are showing up. have to parse through only open shows
+          //ex show json: https: //api.artsy.net/api/shows/5908d4d1139b21635fae5778
+          //id, name (functions as title), description, press_release, start_at, end_at
           if (result.type === "artist") {
             //add artist rendering
-            return (<Artist key={index}
+            return (
+            <Artist key={index}
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
             visit={result._links.self.href}
-            //artist json: https://api.artsy.net/api/artists/4ed901b755a41e0001000a9f
+            //ex artist json: https://api.artsy.net/api/artists/4ed901b755a41e0001000a9f
           />)
           }
-          else if (result.type === "show") {
-            //add show rendering
-          return (<Show key={index}
-            title={result.title}
-            type={result.type}
-            image={result._links.thumbnail.href}
-            visit={result._links.self.href}
-          />)
-            } 
-            else if (result.type === "artwork") {
+          else if (result.type === "artwork") {
             //add artwork rendering
-          return (<Artwork key={index}
-            title={result.title}
-            type={result.type}
-            image={result._links.thumbnail.href}
-            visit={result._links.permalink.href}
-          />)
+            return (
+            <Artwork key={index}
+              title={result.title}
+              type={result.type}
+              image={result._links.thumbnail.href}
+              visit={result._links.permalink.href}
+            />)
             } 
-          else {
-              return console.log(`Not rendering ${result.type}s`);
-            }
+            else if (result.type === "show") {
+            //add artwork rendering
+            return (
+            <Show key={index}
+              title={result.title}
+              type={result.type}
+              image={result._links.thumbnail.href}
+              visit={result._links.permalink.href}
+            />)
+            } 
+            // else {
+            //   return console.log(`Not rendering ${result.type}s`);
+            // }
         })}
         </div>
 
