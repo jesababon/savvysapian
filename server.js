@@ -15,8 +15,8 @@ const app = express();
 
 
 const axios = require('axios');
-const fs = require('fs'),
- xml2js = require('xml2js');
+const fs = require('fs');
+const xml2js = require('xml2js');
 
 
 fs.readFile(__dirname + '/foo.xml', function (err, data) {
@@ -61,17 +61,24 @@ const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
 const parser = new xml2js.Parser();
 
 app.get('/events', (request, response) => {
+    // console.log('hello');
     
     axios.get(XML_URL)
     .then(function(response){
         parser.parseString(response.data, function (err, result){
             for (const value in result){
+                const event = result[value];
                 for (const value in event) {
                 const art_events = event[value];
+                            console.log(art_events)
+
                 return art_events;
           }
             }
-        });
+        }).then(art_events =>{
+            response.json(art_events)
+        }
+        )
     })
 })
 
