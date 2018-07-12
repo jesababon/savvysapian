@@ -1,66 +1,56 @@
 import React, { Component } from "react";
-const traverson = require('traverson');
-const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
+// const traverson = require('traverson');
+// const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
+// const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
 
-traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
+// traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 
 class Show extends Component {
-     constructor(props) {
-       super(props);
-       this.state = {
-         show: []
-       };
-     }
+    //  constructor(props) {
+    //    super(props);
+    //    this.state = {
+    //      shows: []
+    //    };
+    //  }
 
-     componentWillMount() {
-        const api = traverson.from(this.props.showUrl).jsonHal();
-        let currentComponent = this;
+    //  componentDidMount() {
+    //     const api = traverson.from(this.props.showUrl).jsonHal();
+    //     let currentComponent = this;
        
-       api.newRequest()
-         .withRequestOptions({
-           headers: {
-             'X-Xapp-Token': xappToken,
-             'Accept': 'application/vnd.artsy-v2+json'
-           }
-         })
-         .getResource(function (error, data) {
-            //  console.log(data);
-            const showData = data.status;
-             if (data.status !== 'closed') {
-                 return data.status  
-             } else{
-                 console.log('No current or upcoming shows.');
-                 
-             }
-             
-        //    const shows = data._embedded.results.map(result => {
-        //      if (result.type === 'show') {
-        //        return result._links.self.href
-        //      }
-        //      return shows;
-        //    });
-           // console.log(shows);
+    //    api.newRequest()
+    //      .withRequestOptions({
+    //        headers: {
+    //          'X-Xapp-Token': xappToken,
+    //          'Accept': 'application/vnd.artsy-v2+json'
+    //        }
+    //      })
+    //      .getResource(function (error, data) {
+    //         console.log(data);
+                
 
-           if (error) {
-             console.log('Sorry, no shows found');
-           } else {
-             currentComponent.setState({
-               shows: showData
-             });
-           }
-         })
-     }
+             
+    //     //    const shows = data._embedded.results.map(result => {
+    //     //      if (result.type === 'show') {
+    //     //        return result._links.self.href
+    //     //      }
+    //     //      return shows;
+    //     //    });
+    //        // console.log(shows);
+
+    //        if (error) {
+    //          console.log('Sorry, no shows found');
+    //        } else {
+    //          currentComponent.setState({
+    //            shows: data
+    //          });
+    //        }
+    //      })
+    //  }
 
     render(){
         return(
         <div className="Show">
-            <p>Exhibit: {this.props.title}</p>
-            <p>
-                <a href={this.props.visit}>
-                <img src={this.props.image} alt=''/>
-                </a>
-                </p>
+            <p>{this.props.showUrl}</p>
         </div>
         )
     }

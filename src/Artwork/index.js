@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { join } from "path";
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
 const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
@@ -6,33 +7,29 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 
 class Artwork extends Component {
-    componentWillMount() {
-        let currentComponent = this;
-    //    const artworkUrls = [];
-       const artworkUrls = [this.props.input];
-       console.log(artworkUrls);
-       
+    componentDidMount() {
 
-const api = traverson.from('https://api.artsy.net/api').jsonHal();
+        const api = traverson.from(this.props.input).jsonHal();
+        let currentComponent = this;
 
 
             api.newRequest()
-             // .follow('search')
+            //  .follow('artworks')
              .withRequestOptions({
                headers: {
                  'X-Xapp-Token': xappToken,
                  'Accept': 'application/vnd.artsy-v2+json'
                }
              })
-             //  .withTemplateParameters({
-             //    q: this.props.input,
-             //    type: 'show'
-             //   })
+            //   .withTemplateParameters({
+                // slug: this.props.title
+                // type: 'artwork'
+            //    })
              .getResource(function (error, data) {
-                console.log(data);
-               const showData = data.status;
-               if (data.status !== 'closed') {
-                 return data.status
+                // console.log(data);
+            //    const showData = data.status;
+               if (data !== 'closed') {
+                 return data
                } else {
                  console.log('No current or upcoming shows.');
 
@@ -50,7 +47,7 @@ const api = traverson.from('https://api.artsy.net/api').jsonHal();
                  console.log('Sorry, no shows found');
                } else {
                  currentComponent.setState({
-                   shows: showData
+                   data: data
                  });
                }
              })

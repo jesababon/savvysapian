@@ -4,8 +4,8 @@ import "./style.css";
 import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
-// import Show from "../Show";
-import AllShows from "../AllShows";
+import Show from "../Show";
+// import AllShows from "../AllShows";
 
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
@@ -45,7 +45,7 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'bouguereau'
+      q: 'monet'
     })
     .getResource(function (error, data) {
       
@@ -55,7 +55,7 @@ componentWillMount(){
         if(result.type === 'show'){
           
         return result._links.self.href}
-        return shows;
+        return '';
       });
       
       const results = data._embedded.results;
@@ -134,7 +134,10 @@ componentWillMount(){
           //   const showLink= result._links.self.href
           //   console.log(showLink);
             
-          //   return showLink
+          //   return <Show 
+          //     key={index}
+          //     showUrl={result._links.self.href}
+          //     input={result.title}/>
           // }
           //closed shows are showing up. have to parse through only open shows
           //ex show json: https: //api.artsy.net/api/shows/5908d4d1139b21635fae5778
@@ -161,16 +164,12 @@ componentWillMount(){
               visit={result._links.permalink.href}
             />)
             } 
-            else if (result.type === "show") {
-            return <AllShows key={index}
-              input={result.title}/>
-            } 
             else {
-              return console.log(``);
-              // return console.log(`Not rendering ${result.type}s in this module`);
+              // return console.log(``);
+              return console.log(`Not rendering ${result.type}s in this module`);
             }
         })}
-        {/* </div>
+        </div>
             <div className='ShowsResults'>
             {this.state.shows.map((show, index) => {
               // console.log(show);
@@ -181,19 +180,7 @@ componentWillMount(){
                 return ''
               }
             })}
-            </div> */}
-        </div>
-            {/* <div className='ShowsResults'>
-            {this.state.shows.map((show, index) => {
-              // console.log(show);
-              if (show !== undefined) {
-                return <Show key={index}
-              showUrl={show} />
-              }else{
-                return ''
-              }
-            })}
-            </div> */}
+            </div>
         <p><a href={this.state.next}>Next</a>
         </p>
         <Route path="/" exact component={LandingPage}/>
