@@ -5,7 +5,7 @@ const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 
-class Show extends Component {
+class AllShows extends Component {
      constructor(props) {
        super(props);
        this.state = {
@@ -14,16 +14,22 @@ class Show extends Component {
      }
 
      componentWillMount() {
-        const api = traverson.from(this.props.showUrl).jsonHal();
         let currentComponent = this;
-       
+       console.log(this.props.input);
+       const api = traverson.from('https://api.artsy.net/api').jsonHal();
+
        api.newRequest()
+        // .follow('search')
          .withRequestOptions({
            headers: {
              'X-Xapp-Token': xappToken,
              'Accept': 'application/vnd.artsy-v2+json'
            }
          })
+        //  .withTemplateParameters({
+        //    q: this.props.input,
+        //    type: 'show'
+        //   })
          .getResource(function (error, data) {
             //  console.log(data);
             const showData = data.status;
@@ -73,4 +79,4 @@ class Show extends Component {
 //get self json ➡(map) _links.self.href)
 //; thumbnail ➡ (map) _links.thumbnail.href
 
-export default Show;
+export default AllShows;

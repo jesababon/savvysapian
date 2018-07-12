@@ -4,11 +4,13 @@ import "./style.css";
 import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
-import Show from "../Show";
+// import Show from "../Show";
+import AllShows from "../AllShows";
+
+//these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
 const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
-
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
 
@@ -43,17 +45,22 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'kehinde'
+      q: 'bouguereau'
     })
     .getResource(function (error, data) {
+      
       const shows= data._embedded.results.map( result =>{
+        // console.log(shows);
+        
         if(result.type === 'show'){
+          
         return result._links.self.href}
         return shows;
       });
-      // console.log(shows);
       
       const results = data._embedded.results;
+      // console.log(results);
+      
       const next = data._links.next.href; //returns the next json array
       // const showLink = data._embedded.results._links.self.href
       if (error) {
@@ -147,30 +154,26 @@ componentWillMount(){
             //add artwork rendering
             return (
             <Artwork key={index}
+            input={result._links.self.href}
               title={result.title}
               type={result.type}
               image={result._links.thumbnail.href}
               visit={result._links.permalink.href}
             />)
             } 
-            // else if (result.type === "show") {
-            // //add artwork rendering
-            // return (
-            // <Show key={index}
-            //   title={result.title}
-            //   type={result.type}
-            //   image={result._links.thumbnail.href}
-            //   visit={result._links.permalink.href}
-            // />)
-            // } 
+            else if (result.type === "show") {
+            return <AllShows key={index}
+              input={result.title}/>
+            } 
             else {
-              return console.log(`Not rendering ${result.type}s in this module`);
+              return console.log(``);
+              // return console.log(`Not rendering ${result.type}s in this module`);
             }
         })}
-        </div>
+        {/* </div>
             <div className='ShowsResults'>
             {this.state.shows.map((show, index) => {
-              console.log(show);
+              // console.log(show);
               if (show !== undefined) {
                 return <Show key={index}
               showUrl={show} />
@@ -178,8 +181,19 @@ componentWillMount(){
                 return ''
               }
             })}
-            </div>
-
+            </div> */}
+        </div>
+            {/* <div className='ShowsResults'>
+            {this.state.shows.map((show, index) => {
+              // console.log(show);
+              if (show !== undefined) {
+                return <Show key={index}
+              showUrl={show} />
+              }else{
+                return ''
+              }
+            })}
+            </div> */}
         <p><a href={this.state.next}>Next</a>
         </p>
         <Route path="/" exact component={LandingPage}/>
