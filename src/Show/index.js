@@ -77,7 +77,7 @@ class Show extends Component {
         <p>{this.state.description}</p>
         <p><img src={this.state.thumbnail} alt={this.state.name+'thumbnail'}/></p>
         {/* create partners component to pass partnerLink */}
-        <p>{this.state.partnerLink}</p>
+        {/* <p>{this.state.partnerLink}</p> */}
         </div>
         </div>
         // </Router>

@@ -4,6 +4,7 @@
   "proxy": "http://localhost:4567",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
@@ -15,15 +16,16 @@
     "pg-promise": "^8.4.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-native-xml2js": "^1.0.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "superagent": "^3.8.3",
     "traverson": "^6.0.3",
-    "traverson-hal": "^6.0.0"
+    "traverson-hal": "^6.0.0",
+    "xml2js": "^0.4.19"
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently --names \"React,Express\" --prefix-colors \"green,blue\" \"react-scripts start\" \"nodemon server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

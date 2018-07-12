@@ -5,7 +5,7 @@ import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
 import Show from "../Show";
-// import AllShows from "../AllShows";
+import Events from "../Events";
 
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
@@ -36,7 +36,8 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'lina viktor'
+      q: 'music'
+      // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
       
@@ -75,10 +76,12 @@ componentWillMount(){
         <h1>Savvy?</h1>
         <nav>
         <Link to = "/"> Home </Link>
+        <Link to = "/events"> Events</Link>
         </nav>
-        {console.log(this.state.results)}
+        {/* {console.log(this.state.results)} */}
         {/* {console.log('shows in state', this.state.shows)} */}
-        
+        <Route path="/events" exact component={Events}/>
+
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "show") {
             return <Show 
@@ -86,7 +89,7 @@ componentWillMount(){
               showUrl={result._links.self.href}
               input={result.title}/>
           }
-          if (result.type === "artist") {
+          else if (result.type === "artist") {
             //add artist rendering
             return (
             <Artist key={index}

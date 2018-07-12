@@ -64,7 +64,7 @@ class Artist extends Component {
         <div className="Artist">
         
             <p>Artist: {this.state.name}</p>
-                <p>Artist Id: {this.state.id} </p>
+                {/* <p>Artist Id: {this.state.id} </p> */}
                 <p>
                 <img src={this.state.image} alt=''/>
                 </p>
