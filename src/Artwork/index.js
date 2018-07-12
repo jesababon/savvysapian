@@ -1,68 +1,72 @@
 import React, { Component } from "react";
-// import { join } from "path";
-const traverson = require('traverson');
-const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
+// const traverson = require('traverson');
+// const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
+// const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM';
 
-traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
+// traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 
 class Artwork extends Component {
-    componentDidMount() {
+      //  constructor(props) {
+      //    super(props);
+      //    this.state = {
+      //      id: '',
+      //      name: '',
+      //      gender: '',
+      //      image: '',
+      //      artworks: ''
 
-        const api = traverson.from(this.props.input).jsonHal();
-        let currentComponent = this;
+      //    };
+      //  }
 
+      //  componentWillMount() {
+      //    const api = traverson.from(this.props.artworkUrl[0]).jsonHal();
+      //    let currentComponent = this;
 
-            api.newRequest()
-            //  .follow('artworks')
-             .withRequestOptions({
-               headers: {
-                 'X-Xapp-Token': xappToken,
-                 'Accept': 'application/vnd.artsy-v2+json'
-               }
-             })
-            //   .withTemplateParameters({
-                // slug: this.props.title
-                // type: 'artwork'
-            //    })
-             .getResource(function (error, data) {
-                // console.log(data);
-            //    const showData = data.status;
-               if (data !== 'closed') {
-                 return data
-               } else {
-                 console.log('No current or upcoming shows.');
+      //    api.newRequest()
+      //      .withRequestOptions({
+      //        headers: {
+      //          'X-Xapp-Token': xappToken,
+      //          'Accept': 'application/vnd.artsy-v2+json'
+      //        }
+      //      })
+      //      .getResource(function (error, data) {
+      //        if (data !== undefined) {
+      //          //    const shows = data._embedded.results.map(result => {
+      //          //      if (result.type === 'show') {
+      //          //        return result._links.self.href
+      //          //      }
+      //          //      return shows;
+      //          //    });
+      //          // console.log(shows);
 
-               }
+      //          if (error) {
+      //            console.log('');
+      //          } else {
 
-               //    const shows = data._embedded.results.map(result => {
-               //      if (result.type === 'show') {
-               //        return result._links.self.href
-               //      }
-               //      return shows;
-               //    });
-               // console.log(shows);
-
-               if (error) {
-                 console.log('Sorry, no shows found');
-               } else {
-                 currentComponent.setState({
-                   data: data
-                 });
-               }
-             })
-           }
+      //            currentComponent.setState({
+      //              id: data.id,
+      //              name: data.name,
+      //              gender: data.gender,
+      //              image: data._links.thumbnail.href,
+      //              artworks: data._links.artworks.href
+      //            });
+      //          }
+      //        }
+      //       //  console.log('artwork data:', data);
+      //      })
+      //  }
 
     render(){
         return(
         <div className="Artwork">
             <p>Artwork</p>
             <p>Title: {this.props.title}</p>
+            <p>Description: {this.props.description}</p>
             <p>
-                <a href={this.props.visit}>
-                <img src={this.props.image} alt=''/>
-                </a>
-                </p>
+            {/* <a href={this.props.image}> */}
+            <img src={this.props.image} alt=''/>
+            {/* </a> */}
+            </p>
         </div>
         )
     }

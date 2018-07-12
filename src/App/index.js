@@ -15,15 +15,6 @@ traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
 
 
-//search for anything console.log(data._embedded.results[0]._links.permalink.href)
-// console.log(JSON.stringify(data))
-//met only https://api.artsy.net/api/artworks?partner_id=52e9639bc9dc24eff7000103
-// data._embedded.results ➡(map) type(artist, show or article)
-//get self json ➡(map) _links.self.href)
-//; thumbnail ➡ (map) _links.thumbnail.href)
-// const next = data._links.next.href; //returns the next json array
-// return results;
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -45,7 +36,7 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'monet'
+      q: 'lina viktor'
     })
     .getResource(function (error, data) {
       
@@ -75,47 +66,6 @@ componentWillMount(){
     })
   }
 
-    // componentDidMount() {
-    //     let currentComponent = this; 
-    //     console.log(currentComponent);
-        
-        
-    //     const showsApi = traverson.from('https://api.artsy.net:443/api/shows/5908d4d1139b21635fae5778').jsonHal();
-
-    //     // let showTitle = '';
-    //     // console.log('show is titled:', showTitle);
-    //     showsApi.newRequest()
-    //       // .follow('shows')
-    //       .withRequestOptions({
-    //         headers: {
-    //           'X-Xapp-Token': xappToken,
-    //           'Accept': 'application/vnd.artsy-v2+json'
-    //         }
-    //       })
-    //       // .withTemplateParameters({
-    //       //   id: '5908d4d1139b21635fae5778',
-    //       // })
-    //       .getResource(function (error, data) {
-    //         // console.log('shows data:', data);
-
-    //         const dataId = data.id
-    //         if (dataId === '5908d4d1139b21635fae5778') {
-    //           return dataId
-    //         }
-
-    //         const shows = dataId;            
-    //         if (error) {
-    //           console.log('Sorry, no shows found');
-    //         } else {
-    //           currentComponent.setState({
-    //             shows: shows
-    //           });
-    //         }
-    //       })
-    //     }
-
-
-
   render() {
 
     return (
@@ -126,22 +76,16 @@ componentWillMount(){
         <nav>
         <Link to = "/"> Home </Link>
         </nav>
-        {/* {console.log(this.state.results)} */}
+        {console.log(this.state.results)}
         {/* {console.log('shows in state', this.state.shows)} */}
         
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
-          // if (result.type === "show") {
-          //   const showLink= result._links.self.href
-          //   console.log(showLink);
-            
-          //   return <Show 
-          //     key={index}
-          //     showUrl={result._links.self.href}
-          //     input={result.title}/>
-          // }
-          //closed shows are showing up. have to parse through only open shows
-          //ex show json: https: //api.artsy.net/api/shows/5908d4d1139b21635fae5778
-          //id, name (functions as title), description, press_release, start_at, end_at
+          if (result.type === "show") {
+            return <Show 
+              key={index}
+              showUrl={result._links.self.href}
+              input={result.title}/>
+          }
           if (result.type === "artist") {
             //add artist rendering
             return (
@@ -149,7 +93,7 @@ componentWillMount(){
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
-            visit={result._links.self.href}
+            artistUrl={result._links.self.href}
             //ex artist json: https://api.artsy.net/api/artists/4ed901b755a41e0001000a9f
           />)
           }
@@ -157,11 +101,10 @@ componentWillMount(){
             //add artwork rendering
             return (
             <Artwork key={index}
-            input={result._links.self.href}
               title={result.title}
-              type={result.type}
+              description={result.description}
               image={result._links.thumbnail.href}
-              visit={result._links.permalink.href}
+              artworkUrl={result._links.self.href}
             />)
             } 
             else {
@@ -170,17 +113,6 @@ componentWillMount(){
             }
         })}
         </div>
-            <div className='ShowsResults'>
-            {this.state.shows.map((show, index) => {
-              // console.log(show);
-              if (show !== undefined) {
-                return <Show key={index}
-              showUrl={show} />
-              }else{
-                return ''
-              }
-            })}
-            </div>
         <p><a href={this.state.next}>Next</a>
         </p>
         <Route path="/" exact component={LandingPage}/>
