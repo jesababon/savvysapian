@@ -13,6 +13,8 @@ class Events extends Component {
   componentWillMount() {
   const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
   const parser = new xml2js.Parser();
+  let currentComponent = this;
+  
 
   axios.get(XML_URL)
     .then(function (response) {
@@ -21,10 +23,11 @@ class Events extends Component {
           const event = result[value];
           for (const value in event) {
             const art_events = event[value];
-              console.log(art_events);
+              // console.log(art_events);
 
-            return art_events
+            return currentComponent.setState({events: art_events})
           }
+          
         }
       })
     })
@@ -42,17 +45,24 @@ class Events extends Component {
   // }
 
     render(){
-            // console.log(this.state.events);
-    //     return(
-    //     <div className="Show">
-    //         <p>{this.state.title}</p>
-    //         <a href={this.props.visit}>
-    //         <img src={this.props.image} alt=''/>
-    //         </a>
-    //     </div>
-    //     )
-        return 'Events';
-
+      console.log(this.state.events);
+              return(
+        <div className="Events">
+              {this.state.events.map ((event, index) => {
+                return (
+                  <div className="Event Details" key={index}>
+                  <p>{event.DateEnd[0]}</p>
+                  <p>{event.DateStart[0]}</p>
+                  <p>{event.Name[0]}</p>
+                  <p>{event.Description[0]}</p>
+                  <p>{event.Longitude[0]}</p>
+                  <p>{event.Latitude[0]}</p>
+                  {/* <p>{event.venue}</p> */}
+                  </div>
+                )
+              })}
+         </div>
+        )
     }
 }
 
