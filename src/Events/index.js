@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 const axios = require('axios');
 const xml2js = require('xml2js');
 
@@ -11,6 +12,7 @@ class Events extends Component {
      }
 
   componentWillMount() {
+    // Need to change XML_URL to location search with geotag properties
   const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
   const parser = new xml2js.Parser();
   let currentComponent = this;
@@ -45,19 +47,20 @@ class Events extends Component {
   // }
 
     render(){
-      console.log(this.state.events);
+      // console.log(this.state.events);
               return(
         <div className="Events">
               {this.state.events.map ((event, index) => {
                 return (
-                  <div className="Event Details" key={index}>
-                  <p>{event.DateEnd[0]}</p>
-                  <p>{event.DateStart[0]}</p>
+                  <div className="EventDetails" key={index}>
+                  <p>{event.DateEnd[0]}-
+                  {event.DateStart[0]}</p>
                   <p>{event.Name[0]}</p>
-                  <p>{event.Description[0]}</p>
+                  {/* <p>{event.Description[0]}</p> */}
                   <p>{event.Longitude[0]}</p>
                   <p>{event.Latitude[0]}</p>
-                  {/* <p>{event.venue}</p> */}
+                  {/* Need to pass Long and Lat to Map Component */}
+                  {/* Would like to render venue name <p>{event.venue}</p> */}
                   </div>
                 )
               })}
