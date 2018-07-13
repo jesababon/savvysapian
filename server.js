@@ -14,17 +14,16 @@ const app = express();
 // const url = traverson.from('https://api.artsy.net/api').jsonHal();
 
 
-const axios = require('axios');
-const fs = require('fs');
-const xml2js = require('xml2js');
+// const axios = require('axios');
+// const xml2js = require('xml2js');
 
-
-fs.readFile(__dirname + '/foo.xml', function (err, data) {
-  parser.parseString(data, function (err, result) {
-    // console.dir(result);
-    // console.log('Done');
-  });
-});
+// const fs = require('fs');
+// fs.readFile(__dirname + '/foo.xml', function (err, data) {
+//   parser.parseString(data, function (err, result) {
+//     // console.dir(result);
+//     // console.log('Done');
+//   });
+// });
 
 // Static hosting for built files
 app.use("/", express.static("./build/static"));
@@ -57,23 +56,23 @@ const PORT = process.env.PORT || 4567;
 // Your routes go here.  @#*$^@%^@^%O^@
 
 //Celest help with XML
-const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
-const parser = new xml2js.Parser();
+// const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
+// const parser = new xml2js.Parser();
 
-axios.get(XML_URL)
-  .then(function (response) {
-    parser.parseString(response.data, function (err, result) {
-      for (const value in result) {
-        const event = result[value];
-        for (const value in event) {
-          const art_events = event[value];
-          console.log(art_events);
+// axios.get(XML_URL)
+//   .then(function (response) {
+//     parser.parseString(response.data, function (err, result) {
+//       for (const value in result) {
+//         const event = result[value];
+//         for (const value in event) {
+//           const art_events = event[value];
+//         //   console.log(art_events);
           
-          return response.art_events;
-        }
-      }
-    })
-  })
+//           return response.art_events;
+//         }
+//       }
+//     })
+//   })
 
 // app.get('/events', (request, response) => {
 //     getSrc().then(function (response){

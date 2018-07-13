@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-// var parseString = require('react-native-xml2js').parseString;
-// var xml = "<root>Hello xml2js!</root>"
-// parseString(xml, function (err, result) {
-//   console.dir(result);
-// })
+const axios = require('axios');
+const xml2js = require('xml2js');
 
 class Events extends Component {
      constructor(props) {
@@ -12,17 +9,37 @@ class Events extends Component {
          events: []
        };
      }
-     componentWillMount() {
-       console.log(this.state);
-       
-       fetch('/events')
-       .then(response => response.json())
-       .then(events => {
-         this.setState({
-           events: events
-         })
-       })
+
+  componentWillMount() {
+  const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
+  const parser = new xml2js.Parser();
+
+  axios.get(XML_URL)
+    .then(function (response) {
+      parser.parseString(response.data, function (err, result) {
+        for (const value in result) {
+          const event = result[value];
+          for (const value in event) {
+            const art_events = event[value];
+              console.log(art_events);
+
+            return art_events
+          }
+        }
+      })
+    })
   }
+  //    componentWillMount() {
+  //      console.log(this.state);
+       
+  //      fetch('/events')
+  //      .then(response => response.json())
+  //      .then(events => {
+  //        this.setState({
+  //          events: events
+  //        })
+  //      })
+  // }
 
     render(){
             // console.log(this.state.events);
