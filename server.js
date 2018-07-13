@@ -60,31 +60,30 @@ const PORT = process.env.PORT || 4567;
 const XML_URL = 'http://www.nyartbeat.com/list/event_juststarted.en.xml'
 const parser = new xml2js.Parser();
 
-app.get('/events', (request, response) => {
-    // console.log('hello');
-    
-    axios.get(XML_URL)
-    .then(function(response){
-        parser.parseString(response.data, function (err, result){
-            for (const value in result){
-                const event = result[value];
-                for (const value in event) {
-                const art_events = event[value];
-                            console.log(art_events)
-
-                return art_events;
-          }
-            }
-        }).then(art_events =>{
-            response.json(art_events)
+axios.get(XML_URL)
+  .then(function (response) {
+    parser.parseString(response.data, function (err, result) {
+      for (const value in result) {
+        const event = result[value];
+        for (const value in event) {
+          const art_events = event[value];
+          console.log(art_events);
+          
+          return response.art_events;
         }
-        )
+      }
     })
-})
+  })
 
-app.post('/events', function(request, response, next){
+// app.get('/events', (request, response) => {
+//     getSrc().then(function (response){
+//         return response.data
+//     })
+// })
+
+// app.post('/events', function(rquest, response, next){
     // console.log(request.body);
-});
+// });
 
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
