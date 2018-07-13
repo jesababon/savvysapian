@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 // import Artwork from "../Artwork";
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
@@ -61,7 +62,7 @@ class Artist extends Component {
     render(){
         return(
 
-        <div className="Artist">
+        <div className="ArtistDetails">
         
             <p>Artist: {this.state.name}</p>
                 {/* <p>Artist Id: {this.state.id} </p> */}

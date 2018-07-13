@@ -4,8 +4,11 @@ import "./style.css";
 import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
-import Show from "../Show";
-import GeoLocation from '../GeoLocation';
+// import Show from "../Show";
+import Events from "../Events";
+
+
+
 
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
@@ -20,8 +23,8 @@ class App extends Component {
     super(props);
     this.state = {
       results: [],
-      next: '',
-      shows: []
+      next: ''
+      // shows: []
     };
   }
 
@@ -36,19 +39,19 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'music'
+      q: 'lina viktor'
       // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
       
-      const shows= data._embedded.results.map( result =>{
-        // console.log(shows);
+      // const shows= data._embedded.results.map( result =>{
+      //   // console.log(shows);
         
-        if(result.type === 'show'){
+      //   if(result.type === 'show'){
           
-        return result._links.self.href}
-        return '';
-      });
+      //   return result._links.self.href}
+      //   return '';
+      // });
       
       const results = data._embedded.results;
       // console.log(results);
@@ -60,8 +63,8 @@ componentWillMount(){
       } else {
         currentComponent.setState({
           results: results,
-          next: next,
-          shows: shows
+          next: next
+          // shows: shows
         });
       }
     })
@@ -78,16 +81,11 @@ componentWillMount(){
         <Link to = "/"> Home </Link>
         </nav>
         {/* {console.log(this.state.results)} */}
-        <GeoLocation/>
+        <Link to = "/events"> Events</Link>
+        <Route path="/events" exact component={Events}/>
 
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
-          if (result.type === "show") {
-            return <Show 
-              key={index}
-              showUrl={result._links.self.href}
-              input={result.title}/>
-          }
-          else if (result.type === "artist") {
+          if (result.type === "artist") {
             //add artist rendering
             return (
             <Artist key={index}
@@ -98,6 +96,12 @@ componentWillMount(){
             //ex artist json: https://api.artsy.net/api/artists/4ed901b755a41e0001000a9f
           />)
           }
+          // else if (result.type === "show") {
+          //   return <Show 
+          //     key={index}
+          //     showUrl={result._links.self.href}
+          //     input={result.title}/>
+          // }
           else if (result.type === "artwork") {
             //add artwork rendering
             return (
@@ -122,5 +126,6 @@ componentWillMount(){
     );
   }
 }
+
 
 export default App;
