@@ -3,22 +3,6 @@ import "./style.css";
 
 
 class LandingPage extends Component {
-  constructor(props){
-    super(props);
-      this.state = {
-        myData: []
-      };
-  }
-
-  // componentDidMount() {
-  //   console.log(myData);
-    
-  //     myData => {
-  //       this.setState({
-  //         links: link
-  //       });
-  //     };
-  // }
 
   render() {
     return (

@@ -34,17 +34,6 @@ class Events extends Component {
       })
     })
   }
-  //    componentWillMount() {
-  //      console.log(this.state);
-       
-  //      fetch('/events')
-  //      .then(response => response.json())
-  //      .then(events => {
-  //        this.setState({
-  //          events: events
-  //        })
-  //      })
-  // }
 
     render(){
       // console.log(this.state.events);
