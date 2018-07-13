@@ -1,5 +1,10 @@
 import React from "react";
 import Geolocation from "react-geolocation";
+// import Events from "../Events";
+
+{/* <Link to = "/events"> Events</Link> */}
+
+{/* <Route path="/events" exact component={Events}/> */}
 
 export default () => {
   return (
@@ -12,7 +17,7 @@ export default () => {
         getCurrentPosition
       }) =>
         <div>
-          <button onClick={getCurrentPosition}>Get Position</button>
+          <button onClick={getCurrentPosition}>Want more Art?</button>
           {error &&
             <div>
               {error.message}
@@ -23,5 +28,5 @@ export default () => {
           </pre>
         </div>}
     />
-  );
+  ); //then generate event based on lat and long
 };

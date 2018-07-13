@@ -5,12 +5,7 @@ import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
 import Show from "../Show";
-import Events from "../Events";
-import { render } from 'react-dom';
 import GeoLocation from '../GeoLocation';
-
-
-// import Demo from "../Demo";
 
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
@@ -81,30 +76,9 @@ componentWillMount(){
         <h1>Savvy?</h1>
         <nav>
         <Link to = "/"> Home </Link>
-        <Link to = "/events"> Events</Link>
         </nav>
         {/* {console.log(this.state.results)} */}
-        {/* {console.log('shows in state', this.state.shows)} */}
-        <GeoLocation
-  render={({
-    fetchingPosition,
-    position: { coords: { latitude, longitude } = {} } = {},
-    error,
-    getCurrentPosition
-  }) =>
-    <div>
-      <button onClick={getCurrentPosition}>Get Position</button>
-      {error &&
-        <div>
-          {error.message}
-        </div>}
-      <pre>
-        latitude: {latitude}
-        longitude: {longitude}
-      </pre>
-    </div>}
-/>
-        <Route path="/events" exact component={Events}/>
+        <GeoLocation/>
 
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "show") {
