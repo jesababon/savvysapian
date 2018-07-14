@@ -4,8 +4,7 @@ import "./style.css";
 import LandingPage from "../LandingPage";
 import Artist from "../Artist";
 import Artwork from "../Artwork";
-// import Show from "../Show";
-import Events from "../Events";
+import UserLocation from "../UserLocation";
 
 
 
@@ -81,8 +80,7 @@ componentWillMount(){
         <Link to = "/"> Home </Link>
         </nav>
         {/* {console.log(this.state.results)} */}
-        <Link to = "/events"> Events</Link>
-        <Route path="/events" exact component={Events}/>
+        <UserLocation/>
 
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "artist") {
