@@ -23,9 +23,9 @@ addUserLocation(latitude, longitude) {
   }
 
 render() {
-      console.log(this.state);
+      // console.log(this.state);
 
-    if(this.state.userLat !== null){console.log(this.state.userLat);}
+    // if(this.state.userLat !== null){console.log(this.state.userLat);}
 return (
       <div className='Container'>
           {(this.state.userLat !== null) ? (
@@ -34,8 +34,7 @@ return (
           latitude={this.state.userLat}
           longitude={this.state.userLong}
           />
-              )
-            })}
+
           </div>
             ) : ( //a ternary dedication to my friend Eryl Murphy
               <div className='EventRendering'>

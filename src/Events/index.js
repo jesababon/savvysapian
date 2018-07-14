@@ -15,11 +15,14 @@ class Events extends Component {
   componentDidMount() {
     //if lat and long is not null then do the rest of this, else just the button
     // Need to change XML_URL to location search with geotag properties
-    console.log('userLat:',this.props.userLat);
-    console.log('userLong:', this.props.userLong);
-    const XML_URL = 'http://www.nyartbeat.com/list/event_searchNear?latitude=40.719130&longitude=-73.980000&MaxResults=5';
-    // const XML_URL = 'http://www.nyartbeat.com/list/event_searchNear?latitude='+this.state.userLat+'&longitude='+this.state.userLong;
-    console.log('xml log', XML_URL);
+    const userLat = Number(this.props.latitude).toFixed(2);    
+    const userLong = Number(this.props.longitude).toFixed(2);
+        console.log(userLat);
+        console.log(userLong);
+
+    const XML_URL = 'http://www.nyartbeat.com/list/event_searchNear?latitude='+userLat+'&longitude='+userLong+'&SearchRange=3000m&MaxResults=5';
+    // EXAMPLE:     'http://www.nyartbeat.com/list/event_searchNear?latitude=40.719130&longitude=-73.980000&MaxResults=5;
+                  // http://www.nyartbeat.com/list/event_searchNear?latitude=40.7111218&longitude=-73.9677708&MaxResults=5
     
     const parser = new xml2js.Parser();
     let currentComponent = this;    
@@ -28,18 +31,29 @@ class Events extends Component {
 
     axios.get(XML_URL)
       .then(function (response) {
-        parser.parseString(response.data, function (err, result) {
-          for (const value in result) {
-            const event = result[value];
-            for (const value in event) {
-              const art_events = event[value];
-              // console.log(art_events);
+        console.log(response.request.responseURL);
+        
+            // console.log('xml log', XML_URL);
 
-              return currentComponent.setState({ events: art_events })
+        parser.parseString(response.data, function (err, result) {
+          if (err) {
+            console.log('No events found');
+            
+          } else {
+            for (const value in result) {
+              const event = result[value];
+              for (const value in event) {
+                const art_events = event[value];
+                // console.log(art_events);
+
+                return currentComponent.setState({ events: art_events })
             }
 
           }
-        })
+        }
+      }
+      )
+      
       })
   }
 
