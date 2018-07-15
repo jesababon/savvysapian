@@ -45,9 +45,8 @@ class Search extends Component {
     return (
       <div className="searchbar">
           <form onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-            <p>Search for Art</p>
-            <input type="text" name='search' placeholder="what kind of art do you like?"/>
-            <button type="submit">Tell Me</button>
+            <input type="text" name='search' placeholder="Search for Art"/>
+            <button type="submit">Find</button>
           </form>
     </div>
     )}

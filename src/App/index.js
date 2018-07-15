@@ -13,9 +13,10 @@ class App extends Component {
       <div className="App">
         <h1>Savvy?</h1>
         <nav>
-        <Link to = "/"> Home </Link>
+        <Link to = "/home"> Home </Link>
         </nav>
         <Route path="/" exact component={LandingPage}/>
+        <Route path="/home" exact component={LandingPage}/>
       </div>
     </Router>
     );
