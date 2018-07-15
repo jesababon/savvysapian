@@ -1,0 +1,12 @@
+.Logo{
+    font-size: 5rem;
+}
+
+nav{
+    padding: 0 0 10% 0;
+}
+
+a:visited{
+color: black;
+padding: 10%;
+}

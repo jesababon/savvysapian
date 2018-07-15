@@ -48,7 +48,7 @@ return (
                       <button onClick={() => {
                         getCurrentPosition;
                         this.addUserLocation(latitude, longitude);
-                      }}>Get Position</button>
+                      }}>Find Art Near You</button>
                       {error &&
                         <div>
                           {error.message}

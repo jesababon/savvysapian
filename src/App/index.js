@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import "./style.css";
 import LandingPage from "../LandingPage";
+// import TestArtsPage from "../TestArtsPage";
 
 
 class App extends Component {
@@ -9,16 +10,15 @@ class App extends Component {
   render() {
 
     return (
-    <Router>
-      <div className="App">
-        <h1>Savvy?</h1>
+        <div className="App">
         <nav>
-        <Link to = "/home"> Home </Link>
+        <a href= "/" className="Logo" style={{textDecoration:'none'}} > Savvy Sapian</a>
         </nav>
+        <Router>
         <Route path="/" exact component={LandingPage}/>
-        <Route path="/home" exact component={LandingPage}/>
-      </div>
-    </Router>
+        {/* <Route path="/" exact component={TestArtsPage}/> */}
+        </Router>
+        </div>
     );
   }
 }

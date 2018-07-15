@@ -1,0 +1,16 @@
+.ResultsDiv{
+    display: grid;
+    grid-template: repeat(1, [row] 1fr) / repeat(4, [col] 1fr);
+    grid-gap: 2rem;
+    /* max-height: 20rem; */
+    overflow: auto;
+
+}
+
+.ArtistResults{
+    grid-row: row 1/span 4;
+}
+
+.ArtworkResults{
+    grid-column: col 2 , 3, 4;
+}

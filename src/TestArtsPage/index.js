@@ -5,7 +5,6 @@ import Artwork from "../Artwork";
 import UserLocation from "../UserLocation";
 
 
-
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
@@ -14,7 +13,7 @@ traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
 
 
-class ArtResults extends Component {
+class TestArtsPage extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -36,7 +35,7 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: this.props.query.search
+      q: 'monet'
       // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
@@ -73,16 +72,13 @@ componentWillMount(){
     return (
 
       <div className="App">
-        {/* {console.log(this.state.results.title)} */}
+        {/* {console.log(this.state.results)} */}
         <UserLocation/>
 
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "artist") {
             //add artist rendering
-                          // console.log(result.title)
-
             return (
-              
               <div className='ArtistResults'>
             <Artist key={index+result.title}
             title={result.title}
@@ -109,7 +105,6 @@ componentWillMount(){
             else {
               return (
               console.log(`Not rendering ${result.type}s in this module`)
-
               )
             }
         })}
@@ -120,4 +115,4 @@ componentWillMount(){
 }
 
 
-export default ArtResults;
+export default TestArtsPage;
