@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Search from '../Search';
 
 
 class LandingPage extends Component {
@@ -8,7 +9,7 @@ class LandingPage extends Component {
     return (
     <div className="LandingPage">
     <h3>You have landed.</h3>
-    {/* <p>{myData}</p> */}
+    <Search />
     </div>
     );
   }
