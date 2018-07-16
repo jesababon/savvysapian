@@ -1,10 +1,6 @@
 {
   "name": "savvy_sapian",
   "version": "0.1.0",
-  "engines": {
-    "node": "10.3.0",
-    "npm": "5.6.x"
-  },
   "proxy": "http://localhost:4567",
   "private": true,
   "dependencies": {
