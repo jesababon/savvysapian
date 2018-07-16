@@ -45,7 +45,7 @@ return (
                   }) =>
                     <div>
                       <button onClick={() => {
-                        getCurrentPosition;
+                        getCurrentPosition; // eslint-disable-next-line
                         this.addUserLocation(latitude, longitude);
                       }}>Find Art Near You</button>
                       {error &&
