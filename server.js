@@ -6,9 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Static hosting for built files
-app.use("/", express.static("./build/static"));
+app.use("/", express.static("./build/"));
 
-app.use('/public', express.static("public"));
 
 const jsonParser = bodyParser.json();
 app.use(jsonParser);

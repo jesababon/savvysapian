@@ -7,9 +7,9 @@ class EventMap extends Component {
   static defaultProps = {
     center: {
       lat: 40.7128,
-      lng: 74.0060
+      lng: -74.0060
     },
-    zoom: 10
+    zoom: 12
   };
  
   render() {
@@ -26,8 +26,8 @@ class EventMap extends Component {
           defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
-            lat={this.props.eventLat}
-            lng={this.props.eventLong}
+            lat={40.7128}
+            lng={-74.0060}
             text={'Kreyser Avrora'}
           />
         </GoogleMapReact>
