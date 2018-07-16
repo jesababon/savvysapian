@@ -104,7 +104,8 @@ componentWillMount(){
           )} 
             else {
               return (
-              console.log(`Not rendering ${result.type}s in this module`)
+              // console.log(`Not rendering ${result.type}s in this module`)
+              console.log(``)
               )
             }
         })}

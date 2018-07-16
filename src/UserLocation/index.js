@@ -31,8 +31,8 @@ return (
           {(this.state.userLat !== null) ? (
           <div className="Events">
           <Events key={this.state.userLat} 
-          latitude={this.state.userLat}
-          longitude={this.state.userLong}
+          userLat={this.state.userLat}
+          userLong={this.state.userLong}
           />
 
           </div>

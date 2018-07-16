@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
+// import EventMap from '../EventMap';
+
 
 const axios = require('axios');
 const xml2js = require('xml2js');
@@ -15,10 +17,10 @@ class Events extends Component {
   componentDidMount() {
     //if lat and long is not null then do the rest of this, else just the button
     // Need to change XML_URL to location search with geotag properties
-    const userLat = Number(this.props.latitude).toFixed(2);    
-    const userLong = Number(this.props.longitude).toFixed(2);
-        console.log(userLat);
-        console.log(userLong);
+    const userLat = Number(this.props.userLat).toFixed(2);    
+    const userLong = Number(this.props.userLong).toFixed(2);
+        // console.log(userLat);
+        // console.log(userLong);
 
     const XML_URL = 'http://www.nyartbeat.com/list/event_searchNear?latitude='+userLat+'&longitude='+userLong+'&SearchRange=3000m&MaxResults=5';
     // EXAMPLE:     'http://www.nyartbeat.com/list/event_searchNear?latitude=40.719130&longitude=-73.980000&MaxResults=5;
@@ -31,7 +33,7 @@ class Events extends Component {
 
     axios.get(XML_URL)
       .then(function (response) {
-        console.log(response.request.responseURL);
+        // console.log(response.request.responseURL);
         
             // console.log('xml log', XML_URL);
 
@@ -58,20 +60,20 @@ class Events extends Component {
   }
 
 render() {
-      // console.log(this.state);
-
 return (
-      <div className='Container'>
+      <div className='EventsContainer'>
         <div className="Events">
             {this.state.events.map((event, index) => {
               return (
                 <div className="EventDetails" key={index}>
-                  <p>{event.DateEnd[0]}
+                  <p>{event.DateEnd[0]}-
                     {event.DateStart[0]}</p>
                   <p>{event.Name[0]}</p>
                   <p>{event.Description[0]}</p>
-                  <p>{event.Longitude[0]}</p>
-                  <p>{event.Latitude[0]}</p>
+                  {/* <EventMap key={index+event.Longitude[0]}
+                  eventLong={event.Longitude[0]}
+                  eventLat={event.Latitude[0]}
+                  /> */}
               </div>
               )}
               )
