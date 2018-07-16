@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import "./style.css";
-import Search from "../Search";
-// import TestArtsPage from "../TestArtsPage";
+// import Search from "../Search";
+import TestArtsPage from "../TestArtsPage";
 
 
 class App extends Component {
@@ -15,8 +15,8 @@ class App extends Component {
         <a href= "/" className="Logo" style={{textDecoration:'none'}} > Savvy Sapian</a>
         </nav>
         <Router>
-        <Search />
-        {/* <Route path="/" exact component={TestArtsPage}/> */}
+        {/* <Search /> */}
+        <Route path="/" exact component={TestArtsPage}/>
         </Router>
         </div>
     );

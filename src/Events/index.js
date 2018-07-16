@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import EventMap from '../EventMap';
+import EventMap from '../EventMap';
 
 
 const axios = require('axios');
@@ -61,9 +61,31 @@ class Events extends Component {
 render() {
 return (
       <div className='EventsContainer'>
+      {/* {console.log(this.state.events)} */}
+      
+      {/* {console.log('look for lat',this.state.events.map((event, index) =>{
+        const geoArray = [];
+        geoArray.push(event.Latitude, event.Longitude);
+        return geoArray
+        })
+        )
+        } */}
+        
+      
+              <div className="Map">
+                <EventMap 
+                key ={this.state.events.Name}
+                eventCoords={this.state.events.map( event =>{
+                const geoArrayLong = [];
+                geoArrayLong.push(event.Latitude, event.Longitude);
+                return geoArrayLong
+                })}
+                />
+              </div>
         <div className="Events">
             {this.state.events.map((event, index) => {
               return (
+                <div className="EventContainer">
                 <div className="EventDetails" key={index}>
                   <p>{event.Name[0]}</p>
                   <p>{event.DateEnd[0]+' through '}
@@ -71,10 +93,7 @@ return (
                   <div className='EventDescription'>
                    <p>{event.Description[0]}</p>
                   </div>
-                  {/* <EventMap key={index+event.Longitude[0]}
-                  eventLong={event.Longitude[0]}
-                  eventLat={event.Latitude[0]}
-                  /> */}
+              </div>
               </div>
               )}
               )
