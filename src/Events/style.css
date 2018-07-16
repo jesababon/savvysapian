@@ -1,7 +1,0 @@
-.Events {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 2rem;
-  max-height: 20rem;
-  overflow: auto;
-}

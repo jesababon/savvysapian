@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./style.css";
 import Geolocation from "react-geolocation";
 import Events from "../Events";
 

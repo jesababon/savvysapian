@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./style.css";
 // import EventMap from '../EventMap';
 
 
@@ -66,10 +65,12 @@ return (
             {this.state.events.map((event, index) => {
               return (
                 <div className="EventDetails" key={index}>
-                  <p>{event.DateEnd[0]}-
-                    {event.DateStart[0]}</p>
                   <p>{event.Name[0]}</p>
-                  <p>{event.Description[0]}</p>
+                  <p>{event.DateEnd[0]+' through '}
+                    {event.DateStart[0]}</p>
+                  <div className='EventDescription'>
+                   <p>{event.Description[0]}</p>
+                  </div>
                   {/* <EventMap key={index+event.Longitude[0]}
                   eventLong={event.Longitude[0]}
                   eventLat={event.Latitude[0]}

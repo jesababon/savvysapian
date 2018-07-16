@@ -1,12 +1,60 @@
-.Logo{
-    font-size: 5rem;
+.Logo {
+  font-size: 5rem;
 }
 
-nav{
-    padding: 0 0 10% 0;
+nav {
+  text-align: left;
+  padding: 0 0 10% 0;
 }
 
-a:visited{
-color: black;
-padding: 10%;
+body {
+  text-align: center
+}
+
+a:visited {
+  color: black;
+  padding: 10%;
+}
+
+div {
+  /* padding: 2%; */
+  margin: 2%;
+}
+
+.ResultsDiv {
+  display: grid;
+  text-align: center;
+  grid-template: repeat(1, [row] 1fr) / repeat(4, [col] 1fr);
+  grid-gap: 2rem;
+  padding: 2%;
+  /* max-height: 20rem; */
+  /* overflow: auto; */
+}
+
+.ArtistResults {
+  grid-row: row 1/span 4;
+}
+
+.ArtistDetails {
+  border: 5px solid blueviolet;
+  padding: 2%;
+  align-content: center;
+}
+
+.ArtworkResults {
+  grid-column: col 2, 3, 4;
+}
+
+.ArtworkDetails {
+  border: 5px solid greenyellow;
+  margin: 2%;
+}
+
+.Events {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 2rem;
+  max-height: 20rem;
+  padding: 2%;
+  overflow: auto;
 }

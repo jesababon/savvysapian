@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import "./style.css";
-import LandingPage from "../LandingPage";
+import Search from "../Search";
 // import TestArtsPage from "../TestArtsPage";
 
 
@@ -15,7 +15,7 @@ class App extends Component {
         <a href= "/" className="Logo" style={{textDecoration:'none'}} > Savvy Sapian</a>
         </nav>
         <Router>
-        <Route path="/" exact component={LandingPage}/>
+        <Search />
         {/* <Route path="/" exact component={TestArtsPage}/> */}
         </Router>
         </div>

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import "./style.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const traverson = require("traverson");
 const JsonHalAdapter = require("traverson-hal"); //plugin adds support for hypertext application language
-const xappToken =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMTc1MTE2NCwiaWF0IjoxNTMxMTQ2MzY0LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0MzcwN2MwMmRlNjEwMDIyMjMzNmZkIn0.d7Q59zoc22gLyZHnzkWRchMf6yNvXOzJHpu0mimOzGM";
+const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMjM1NzQ1NywiaWF0IjoxNTMxNzUyNjU3LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0Y2IwZDFlMDFlN2IwMDFmMjllY2JlIn0.jn-RY4N6BH64faWWKqJZBdXyjipwUnsYVTh61aQYy8c';
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 class Artist extends Component {
