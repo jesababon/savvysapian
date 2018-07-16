@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
-require('dotenv').config()
 import "./style.css";
 import Search from "../Search";
 // import TestArtsPage from "../TestArtsPage";
