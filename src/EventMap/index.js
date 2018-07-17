@@ -24,7 +24,7 @@ class EventMap extends Component {
       lat: 40.744086,
       lng: -73.987708
     },
-    zoom: 13,
+    zoom: 13.5,
     myCoords: {lat: 40.7128, lng: -74.0060}
   };
  
@@ -43,7 +43,7 @@ class EventMap extends Component {
        })
      });
 
-    // console.log(eachEv);
+    // console.log(eachEv);x
     // console.log('props', this.props);
 
     return (
