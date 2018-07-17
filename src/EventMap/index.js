@@ -57,7 +57,7 @@ class EventMap extends Component {
           key={index}
           latitude={oneEv.evLat}
           longitude={oneEv.evLong}
-          text={oneEv.evName}
+          text={index}
           />)
         })}
           

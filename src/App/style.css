@@ -7,14 +7,14 @@ header{
     width: 100%;
     margin: 0 0 3% 0;
     background-color: black;
+    /* padding: 3% 0; */
 }
 
 .Logo {
   font-size: 5rem;
   color: white;
   margin: 0 20px 20px 0;
-  font-family: 'Jura',
-  sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 
 nav {
@@ -28,7 +28,7 @@ body {
   text-align: left;
   padding: 2%;
   background-color: black;
-  background-image: url('/public/paintchalk.jpeg');
+  background-image: url('/paintchalk.jpeg');
   background-size: stretch;
   background-repeat: no-repeat;
   /* height: 100%; */
@@ -46,6 +46,8 @@ body {
   position: fixed;
   top:30%;
   left:40%;
+  font-family: 'Jura';
+
 }
 
 a:visited {
@@ -112,9 +114,9 @@ image:hover {
 .EventContainer{
     display: flex;
     flex-flow: row nowrap;
-    overflow: auto;
+    overflow: hidden;
     align-items: center;
-    font-size: 1rem;
+    font-size: smaller;
     color: white; 
     background: black;
     height: 50%;
@@ -130,7 +132,7 @@ overflow: auto;
 transition: 0.4s ease-in-out;
 color: white;
 justify-content: center;
-font-size: smaller;
+font-size: small;
 }
 
 .EventDetails {
@@ -152,6 +154,7 @@ font-size: smaller;
 
 .Map{
   z-index: 1;
+  padding: 2% 0;
 }
 
 input[type=text] {
@@ -161,7 +164,7 @@ input[type=text] {
   border-radius: 4px;
   font-size: smaller;
   background-color: white;
-  
+  font-family: 'Jura', sans-serif;
   /* background-position: 10px 10px; */
   /* background-repeat: no-repeat; */
   padding: 5%;
@@ -172,7 +175,7 @@ input[type=text] {
 input[type=text]:focus {
   background-color: white;
   color: violet;
-  width: 85%;
+  width: 80%;
 }
 
 @media screen and (max-width: 600px) {
@@ -185,10 +188,6 @@ input[type=text]:focus {
   input[type=text] {
     border: 1px solid #ccc;
   }
-  image{
-    size: 10vh;
-  }
-
 }
 button {
   position: relative;
@@ -198,7 +197,7 @@ button {
     padding: 5%;
     font-size: 1rem;
     cursor: pointer;
-    font-family: 'Jura',
+    font-family: 'Jura', sans-serif;
 }
 
 button:hover {

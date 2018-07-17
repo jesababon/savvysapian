@@ -101,7 +101,7 @@ return (
               return (
                 <div className="EventDetails" key={index}>
                   <p style={{fontWeight:'bold'}}>{event.Name[0]}</p>
-                  <p>{event.DateEnd[0]+' - '}
+                  <p>{event.DateEnd[0]+' to '}
                     {event.DateStart[0]}</p>
                     <p>{event.Media}</p>
                     <p>{event.Venue[0].Address[0]}</p>
