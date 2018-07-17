@@ -129,12 +129,15 @@ font-size: smaller;
   /* padding: 5px; */
   height: 40vh;
   width: 100%;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .EventDescription{
   height: 50%;
   overflow: auto;
   padding: 2px;
+  text-shadow: 0 1px black;
+
   
 }
 
@@ -145,6 +148,7 @@ input[type=text] {
   border-radius: 4px;
   font-size: smaller;
   background-color: white;
+  
   /* background-position: 10px 10px; */
   /* background-repeat: no-repeat; */
   padding: 5%;
