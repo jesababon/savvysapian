@@ -72,7 +72,7 @@ componentWillMount(){
 
     return (
 
-      <div className="App">
+      <div className="ResultsContainer">
         {/* {console.log(this.state.results.title)} */}
         <UserLocation/>
 

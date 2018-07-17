@@ -13,7 +13,7 @@ class App extends Component {
         <div className="App">
         <header>
         <a href= "/" className="Logo" style={{textDecoration:'none'}} > Savvy Sapian</a>
-        <p style={{color:'white'}}>Art at your fingertips.</p>
+        <h2 style={{color:'white'}}>Art at your fingertips.</h2>
         </header>
         <div className="appBody">
         <Router>

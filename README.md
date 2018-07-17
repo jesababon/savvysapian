@@ -1,35 +1,32 @@
 # Savvy Sapian
 
-* **Savvy Sapian is a location-based game that rewards adventurous arts lovers.** 
-- Savvy Sapian is inspired by Pokemon-Go. My goal is to give people the same feeling of light-hearted exploration when visiting cultural events in NYC. Players will gain points for participating in art and culture events in NYC. Participation will be tracked by geolocation. Top players will be ranked and eventually will be rewarded with private events where they can meet artists, meet other engaged users, win free tickets to events, or win art etc.
+* **Savvy Sapian is a location-based game that gives adventurous arts lovers info on art events nearby.** 
+- Savvy Sapian's goal is to give people the feeling of light-hearted exploration when visiting cultural events in NYC.
 ---
 
 * **User Stories** 
-As an arts-lover I want to plan and track my cultural adventures.
-As an arts-newbie I want to know which cultural events will match my interests and meet people with similar interests.
+As an arts-lover I want to look up my favorite art and get a quick overview of any arts events in my area.
 
 * **Technologies**. 
-This app will use HTML, CSS, JavaScript, Artbeat's API, Express, React, and Geolocation.
+This app  uses HTML, CSS, JavaScript, Artsy's API (json) Artbeat's API (xml), Express.js, React.js, and GoogleMap API.
 I plan to include User comments and OAuth.
 
-* **Anticipated Design Tools** CSS, Bulma and D3.
 
-* **Heroku Deployment** Will do.
+* **Heroku Deployment** 
+https://savvysapian.herokuapp.com/
 
 ## MVP
-- The MVP will have user authentication for players. It will allow players to find and save their favorite events.
-
-## MVP and WireFrames
-- slides:
+- The MVP allows users to find artworks and events near their geolocation.
 
 ## Reach Goals
 - MeetUp and GoogleCalendar API integration.
 - Event notifications as a React Native app.
 - Socket.io chat feature in event page so players can interact.
+- Sketch plugin for drawing.
 
 ## Timeline(s)
 - MVP timeline is one week. Reach Goal is 6 months.
 
-## Foressen Challenges
-- Need to improve design abilities using Bulma and/or D3.
-- Existing Artbeat API is lacking in data (summers are slow), may need to scrape data together from other places.
+## Foreseen Improvements
+- Need to improve design abilities using Bulma for UI and D3 for maps.
+- Navigating the API data took longer than anticipated. Need to get a bit deeper for more information regarding events. Artsy data was not very helpful. Will look into other data (wikisearch, google arts and culture, etc) for future improvements.
