@@ -51,12 +51,12 @@ class EventMap extends Component {
           defaultZoom={this.props.zoom}
         >
         {eachEv.map((oneEv, index) => {
-          console.log('marker', oneEv.evLong);          
+          console.log('marker', oneEv.evLat);          
           return(
           <Marker
           key={index}
-          lat={40.7128}
-          lng={-74.0060}
+          lat={Number(oneEv.evLat)}
+          lng={Number(oneEv.evLong)}
           text={oneEv.evName}
           />)
         })}

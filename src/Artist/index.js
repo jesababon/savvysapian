@@ -61,11 +61,10 @@ class Artist extends Component {
 
     return (
     <div className="ArtistDetails">
-        <p>Artist: {this.state.name}</p>
         {/* <p>Artist Id: {this.state.id} </p> */}
         <p>
           <a href={`https://en.wikipedia.org/wiki/${this.state.name}`} target="_blank">
-            <img src={this.state.image} alt="" />
+            <img src={this.state.image} alt="" title={this.state.name}/>
           </a>
         </p>
         {/* <Artwork artworksUrl={this.state.artworks}/> */}

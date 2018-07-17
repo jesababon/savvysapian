@@ -1,7 +1,10 @@
 header{
-    position:absolute;
+    position:fixed;
     top:0;
     overflow: hidden;
+    z-index: 1000;
+    height: 200px;
+    margin: 0 0 3% 0;
 }
 
 .Logo {
@@ -18,10 +21,14 @@ nav {
 }
 
 body {
+  position: relative;
+  top: 10px;
   text-align: left;
-  margin: 3%;
   padding: 2%;
   background-color: black;
+  background-image: url('/public/paintchalk.jpeg');
+  background-size: stretch;
+  background-repeat: no-repeat;
   /* height: 100%; */
 }
 
@@ -30,6 +37,7 @@ body {
   top:100px;
   bottom:100px;
   overflow: auto;
+
 }
 
 .SearchBar{
@@ -43,10 +51,11 @@ a:visited {
 }
 
 footer{
-     position:absolute;
+     position:fixed;
      bottom:0;
      overflow: hidden;
      text-align: center;
+    
 }
 
 image{
@@ -107,7 +116,7 @@ image:hover {
 display: flex;
 flex-flow: column-reverse nowrap;
 flex-direction: row;
-overflow: hidden;
+overflow: auto;
 -webkit-transition: 2s ease-in-out;
 transition: 0.4s ease-in-out;
 color: white;
@@ -125,6 +134,7 @@ font-size: smaller;
 .EventDescription{
   height: 50%;
   overflow: auto;
+  padding: 2px;
   
 }
 
