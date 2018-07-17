@@ -21,7 +21,7 @@ class TestArtsPage extends Component {
     };
   }
 
-componentWillMount(){
+componentDidMount(){
   let currentComponent = this;
   // console.log('state:', this.state);
   // console.log('props:', this.props.query.search);
@@ -35,7 +35,7 @@ componentWillMount(){
       }
     })
     .withTemplateParameters({
-      q: 'lina viktor'
+      q: 'jean gerome'
       // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
@@ -70,7 +70,7 @@ componentWillMount(){
 
     return (
 
-      <div className="App">
+      <div className="ResultsContainer">
         {/* {console.log(this.state.results)} */}
         <UserLocation/>
 

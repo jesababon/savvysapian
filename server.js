@@ -8,9 +8,6 @@ const app = express();
 // Static hosting for built files
 app.use("/", express.static("./build/"));
 
-// app.use('/public', express.static("public"));
-
-
 const jsonParser = bodyParser.json();
 app.use(jsonParser);
 
