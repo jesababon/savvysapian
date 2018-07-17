@@ -100,6 +100,7 @@ return (
             {this.state.events.map((event, index) => {
               return (
                 <div className="EventDetails" key={index}>
+                  <p style={{fontWeight:'bold', textAlign:'center'}}>{index}</p>
                   <p style={{fontWeight:'bold'}}>{event.Name[0]}</p>
                   <p>{event.DateEnd[0]+' to '}
                     {event.DateStart[0]}</p>
