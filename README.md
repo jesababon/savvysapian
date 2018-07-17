@@ -1,6 +1,6 @@
 # Savvy Sapian
 
-* **Savvy Sapian is a location-based game that gives adventurous arts lovers info on art events nearby.** 
+* **Savvy Sapian is a location-based React.js app that gives adventurous arts lovers info on art events in their area.** 
 - Savvy Sapian's goal is to give people the feeling of light-hearted exploration when visiting cultural events in NYC.
 ---
 
