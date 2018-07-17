@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
  
-const Marker = ({text }) => (
+const Marker = ({latitude, longitude, text }) => (
   <div style={{
     color: 'white', 
     background: 'grey',
@@ -51,14 +51,14 @@ class EventMap extends Component {
           defaultZoom={this.props.zoom}
         >
         {eachEv.map((oneEv, index) => {
-          console.log('marker', oneEv.evLat);          
-          return
+          // console.log('marker', oneEv.evLat);          
+          return(
           <Marker
           key={index}
-          lat={oneEv.evLat}
-          lng={oneEv.evLong}
+          latitude={oneEv.evLat}
+          longitude={oneEv.evLong}
           text={oneEv.evName}
-          />
+          />)
         })}
           
         </GoogleMapReact>
