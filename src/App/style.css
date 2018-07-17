@@ -1,62 +1,81 @@
 .Logo {
   font-size: 5rem;
+  color: white;
 }
 
 nav {
   text-align: left;
-  padding: 0 0 10% 0;
+  padding: 0 0 5% 0;
 }
 
 body {
-  text-align: center
+  text-align: center;
+  margin: 3%;
+  background-color: black;
 }
 
 a:visited {
-  color: black;
-  padding: 10%;
-}
-
-div {
-  /* padding: 2%; */
-  margin: 2%;
+  color: white;
 }
 
 .ResultsDiv {
-  display: grid;
-  text-align: center;
-  grid-template: repeat(1, [row] 1fr) / repeat(4, [col] 1fr);
-  grid-gap: 2rem;
-  /* padding: 2%; */
-  /* max-height: 20rem; */
-  /* overflow: auto; */
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    font-size: 1rem;
+
 }
 
-.ArtistResults {
-  grid-row: row 1/span 4;
+/* .ArtistResults {
 }
 
 .ArtistDetails {
-  border: 5px solid blueviolet;
-  /* padding: 2%; */
-  align-content: center;
-}
+} */
 
 .ArtworkResults {
-  grid-column: col 2, 3, 4;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    flex-direction: row;
+
 }
 
-.ArtworkDetails {
-  border: 5px solid greenyellow;
-  margin: 2%;
+/* .ArtworkDetails {
+  border: 5px solid black;
+
+} */
+
+.EventsContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+    align-items: center;
+    font-size: 1rem;
+    color: white; 
+    background: black;
 }
 
 .Events{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 2rem;
+display: flex;
+flex-flow: column-reverse nowrap;
+flex-direction: row;
+overflow: auto;
+
 }
 
 .EventDescription{
-  max-height: 100px;
+  max-height: 10rem;
   overflow: auto;
+  
+}
+
+.EventDetails{
+      border: gray 2px dashed;
+      /* padding: 5px; */
+      height: 300px;
+      width: 100%;
+
 }

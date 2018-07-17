@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EventMap from '../EventMap';
+// import EventMap from '../EventMap';
 
 
 const axios = require('axios');
@@ -61,7 +61,7 @@ class Events extends Component {
 render() {
 return (
       <div className='EventsContainer'>
-      {/* {console.log(this.state.events)} */}
+      {console.log(this.state)}
       
       {/* {console.log('look for lat',this.state.events.map((event, index) =>{
         const geoArray = [];
@@ -72,20 +72,32 @@ return (
         } */}
         
       
-              <div className="Map">
+              {/* <div className="Map">
                 <EventMap 
                 key ={this.state.events.Name}
-                eventCoords={this.state.events.map( event =>{
+                eventData={this.state.events.map( event =>{
+                  
                 const geoArrayLong = [];
-                geoArrayLong.push(event.Latitude, event.Longitude);
+                geoArrayLong.push({
+                  eventLat: event.Latitude, 
+                  eventLong: event.Longitude,
+                  eventName: event.Name[0],
+                  eventMedia: event.Media,
+                  eventDateStart: event.DateStart[0],
+                  eventDateEnd: event.DateEnd[0],
+                  eventDesc: event.Description[0],
+                  eventAddress: event.Venue[0].Address[0],
+                  eventPrice: event.Price[0]
+              
+                  
+                });
                 return geoArrayLong
                 })}
                 />
-              </div>
+              </div> */}
         <div className="Events">
             {this.state.events.map((event, index) => {
               return (
-                <div className="EventContainer">
                 <div className="EventDetails" key={index}>
                   <p>{event.Name[0]}</p>
                   <p>{event.DateEnd[0]+' through '}
@@ -93,7 +105,6 @@ return (
                   <div className='EventDescription'>
                    <p>{event.Description[0]}</p>
                   </div>
-              </div>
               </div>
               )}
               )

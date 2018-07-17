@@ -78,8 +78,8 @@ componentWillMount(){
           if (result.type === "artist") {
             //add artist rendering
             return (
-              <div className='ArtistResults'>
-            <Artist key={index+result.title}
+              <div className='ArtistResults' key={index+'artistResults'}>
+            <Artist key={index+'artist'}
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
@@ -92,8 +92,8 @@ componentWillMount(){
           else if (result.type === "artwork") {
             //add artwork rendering
             return (
-              <div className = 'ArtworkResults'>
-                <Artwork key={index+result.title}
+              <div className = 'ArtworkResults' key={index+'artworkResults'}>
+                <Artwork key={index+'artwork'}
                   title={result.title}
                   description={result.description}
                   image={result._links.thumbnail.href}

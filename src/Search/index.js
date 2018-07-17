@@ -42,7 +42,7 @@ class Search extends Component {
       </div>)
     } else{
     return (
-      <div className="searchbar">
+      <div className="SearchBar">
           <form onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
             <input type="text" name='search' placeholder="Search for Art"/>
             <button type="submit">Find</button>

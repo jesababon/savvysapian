@@ -40,7 +40,7 @@ componentWillMount(){
       // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
-      console.log('get resource data',data);
+      // console.log('get resource data',data);
       
       // const shows= data._embedded.results.map( result =>{
       //   // console.log(shows);
@@ -84,7 +84,7 @@ componentWillMount(){
             return (
               
               <div className='ArtistResults'>
-            <Artist key={index+result.title}
+            <Artist key={'artist'+result.title}
             title={result.title}
             type={result.type}
             image={result._links.thumbnail.href}
@@ -98,7 +98,7 @@ componentWillMount(){
             //add artwork rendering
             return (
               <div className = 'ArtworkResults'>
-                <Artwork key={index+result.title}
+                <Artwork key={'artwork'+result.title}
                   title={result.title}
                   description={result.description}
                   image={result._links.thumbnail.href}

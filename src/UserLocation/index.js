@@ -24,9 +24,9 @@ addUserLocation(latitude, longitude) {
 render() {
       // console.log(this.state);
 
-    // if(this.state.userLat !== null){console.log(this.state.userLat);}
+    // if(this.state.userLat !== null){console.log(this.state)}
 return (
-      <div className='Container'>
+      <div className='ContainerOfEvents'>
           {(this.state.userLat !== null) ? (
           <div className="Events">
           <Events key={this.state.userLat} 
@@ -44,7 +44,7 @@ return (
                     getCurrentPosition
                   }) =>
                     <div>
-                      <button onClick={() => {
+                      <button onClick={() => {// eslint-disable-next-line
                         getCurrentPosition; // eslint-disable-next-line
                         this.addUserLocation(latitude, longitude);
                       }}>Find Art Near You</button>
