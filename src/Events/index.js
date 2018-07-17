@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-// import EventMap from '../EventMap';
+import EventMap from '../EventMap';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 
 const axios = require('axios');
@@ -60,7 +61,7 @@ class Events extends Component {
 
 render() {
 return (
-      <div className='EventsContainer'>
+      <div classname="EventContainer">
       {console.log(this.state)}
       
       {/* {console.log('look for lat',this.state.events.map((event, index) =>{
@@ -72,7 +73,7 @@ return (
         } */}
         
       
-              {/* <div className="Map">
+              <div className="Map">
                 <EventMap 
                 key ={this.state.events.Name}
                 eventData={this.state.events.map( event =>{
@@ -94,14 +95,16 @@ return (
                 return geoArrayLong
                 })}
                 />
-              </div> */}
-        <div className="Events">
+              </div>
+        <CSSTransitionGroup className="Events" transitionName="fades" transitionEnterTimeout={1700} transitionLeaveTimeout={1700}>
             {this.state.events.map((event, index) => {
               return (
                 <div className="EventDetails" key={index}>
-                  <p>{event.Name[0]}</p>
-                  <p>{event.DateEnd[0]+' through '}
+                  <p style={{fontWeight:'bold'}}>{event.Name[0]}</p>
+                  <p>{event.DateEnd[0]+' - '}
                     {event.DateStart[0]}</p>
+                    <p>{event.Media}</p>
+                    <p>{event.Venue[0].Address[0]}</p>
                   <div className='EventDescription'>
                    <p>{event.Description[0]}</p>
                   </div>
@@ -109,7 +112,7 @@ return (
               )}
               )
             }
-        </div>
+        </CSSTransitionGroup>
       </div>
         )
       }

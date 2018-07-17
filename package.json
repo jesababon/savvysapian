@@ -17,6 +17,7 @@
     "pg-monitor": "^1.0.0",
     "pg-promise": "^8.4.5",
     "react": "^16.4.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.4.1",
     "react-geolocated": "^2.4.0",
     "react-geolocation": "^1.0.3",

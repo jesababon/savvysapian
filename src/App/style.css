@@ -1,21 +1,62 @@
+header{
+    position:absolute;
+    top:0;
+    overflow: hidden;
+}
+
 .Logo {
   font-size: 5rem;
   color: white;
+  margin: 0 20px 20px 0;
+  font-family: 'Jura',
+  sans-serif;
 }
 
 nav {
-  text-align: left;
+  text-align: center;
   padding: 0 0 5% 0;
 }
 
 body {
-  text-align: center;
+  text-align: left;
   margin: 3%;
+  padding: 2%;
   background-color: black;
+  /* height: 100%; */
+}
+
+.appBody{
+  position:relative;
+  top:100px;
+  bottom:100px;
+  overflow: auto;
+}
+
+.SearchBar{
+  position: fixed;
+  top:30%;
+  left:40%;
 }
 
 a:visited {
   color: white;
+}
+
+footer{
+     position:absolute;
+     bottom:0;
+     overflow: hidden;
+     text-align: center;
+}
+
+image{
+  max-width:80%;
+  max-height:80%;
+  transition: transform .2s;
+}
+
+image:hover {
+  transform: scale(1.5);
 }
 
 .ResultsDiv {
@@ -25,8 +66,10 @@ a:visited {
     text-align: center;
     align-items: center;
     justify-content: center;
+    height:40%;
     max-width: 100%;
     font-size: 1rem;
+
 
 }
 
@@ -38,7 +81,7 @@ a:visited {
 
 .ArtworkResults {
     display: flex;
-    flex-flow: column-reverse nowrap;
+    flex-flow: column nowrap;
     flex-direction: row;
 
 }
@@ -48,7 +91,7 @@ a:visited {
 
 } */
 
-.EventsContainer{
+.EventContainer{
     display: flex;
     flex-flow: row nowrap;
     overflow: auto;
@@ -56,26 +99,69 @@ a:visited {
     font-size: 1rem;
     color: white; 
     background: black;
+    height: 50%;
+
 }
 
 .Events{
 display: flex;
 flex-flow: column-reverse nowrap;
 flex-direction: row;
-overflow: auto;
+overflow: hidden;
+-webkit-transition: 2s ease-in-out;
+transition: 0.4s ease-in-out;
+color: white;
+justify-content: center;
+font-size: smaller;
+}
 
+.EventDetails {
+  border: gray 2px dashed;
+  /* padding: 5px; */
+  height: 40vh;
+  width: 100%;
 }
 
 .EventDescription{
-  max-height: 10rem;
+  height: 50%;
   overflow: auto;
   
 }
 
-.EventDetails{
-      border: gray 2px dashed;
-      /* padding: 5px; */
-      height: 300px;
-      width: 100%;
+input[type=text] {
+  width: 60%;
+  /* box-sizing: border-box; */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: smaller;
+  background-color: white;
+  /* background-position: 10px 10px; */
+  /* background-repeat: no-repeat; */
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  background-color: gray;
+  color: white;
+  width: 85%;
+}
+
+@media screen and (max-width: 600px) {
+  input[type=text] {
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  input[type=text] {
+    border: 1px solid #ccc;
+  }
+
+  image{
+    size: 10vh;
+  }
+
 
 }
