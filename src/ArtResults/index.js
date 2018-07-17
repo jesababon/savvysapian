@@ -74,8 +74,9 @@ componentWillMount(){
 
       <div className="ResultsContainer">
         {/* {console.log(this.state.results.title)} */}
-        <UserLocation/>
-
+        <div>
+        <UserLocation />
+        </div>
         <div className="ResultsDiv">{this.state.results.map((result, index) => {
           if (result.type === "artist") {
             //add artist rendering

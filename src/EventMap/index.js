@@ -44,7 +44,7 @@ class EventMap extends Component {
     return (
 
       // Important! Always set the container height explicitly
-      <div style={{ height: '50vh', width: '100%' }}>
+      <div style={{ height: '30vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:mapApi}}
           defaultCenter={this.props.center}
@@ -52,13 +52,13 @@ class EventMap extends Component {
         >
         {eachEv.map((oneEv, index) => {
           console.log('marker', oneEv.evLat);          
-          return(
+          return
           <Marker
           key={index}
-          lat={Number(oneEv.evLat)}
-          lng={Number(oneEv.evLong)}
+          lat={oneEv.evLat}
+          lng={oneEv.evLong}
           text={oneEv.evName}
-          />)
+          />
         })}
           
         </GoogleMapReact>

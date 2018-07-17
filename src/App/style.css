@@ -72,14 +72,14 @@ image:hover {
   transform: scale(1.5);
 }
 
-.ResultsDiv {
+.ResultsDiv{
     display: flex;
     flex-flow: row nowrap;
     overflow: auto;
     text-align: center;
     align-items: center;
     justify-content: center;
-    height:40%;
+    /* height: auto; */
     max-width: 100%;
     font-size: 1rem;
 
@@ -96,7 +96,12 @@ image:hover {
     display: flex;
     flex-flow: column nowrap;
     flex-direction: row;
+    /* height: auto; */
 
+}
+
+.ResultsContainer{
+  height: 84vw;
 }
 
 /* .ArtworkDetails {
@@ -175,7 +180,7 @@ input[type=text]:focus {
     text-align: left;
     width: 100%;
     margin: 0;
-    padding: 14px;
+    padding: 6px;
   }
   input[type=text] {
     border: 1px solid #ccc;
