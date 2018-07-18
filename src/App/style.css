@@ -75,7 +75,7 @@ image:hover {
 
 .ResultsDiv{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     overflow: auto;
     text-align: center;
     align-items: center;
@@ -94,11 +94,11 @@ image:hover {
 } */
 
 .ArtworkResults {
-    display: flex;
-    flex-flow: column nowrap;
+    /* display: flex;
+    flex-flow: column nowrap; */
     text-align: center;
     padding: 3% 0;
-    height: 300px;
+    height: 100%;
 
 }
 
