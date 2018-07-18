@@ -6,7 +6,7 @@ header{
     width: 100%;
     margin: 0 0 1% 0;
     background-color: black;
-    padding: 3% 0;
+    padding: 1% 0;
 }
 
 .Logo {
@@ -23,7 +23,7 @@ body {
   padding: 2%;
   background-color: black;
   background-image: url('/paintchalk.jpeg');
-  background-size: fill;
+  background-size: stretch;
   background-repeat: no-repeat;
   /* height: 100%; */
 }
@@ -96,9 +96,9 @@ image:hover {
 .ArtworkResults {
     display: flex;
     flex-flow: column nowrap;
-    flex-direction: row;
     text-align: center;
-    /* height: auto; */
+    padding: 3% 0;
+    height: 300px;
 
 }
 
@@ -112,6 +112,7 @@ image:hover {
     flex-flow: row nowrap;
     overflow: hidden;
     align-items: center;
+    text-emphasis: center;
     font-size: smaller;
     color: white; 
     background: black;
@@ -180,7 +181,6 @@ input[type=text]:focus {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-
 }
 
 .Events {

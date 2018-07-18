@@ -20,10 +20,15 @@ https://savvysapian.herokuapp.com/
 
 ## WireFrames
 * **Landing Page with Search Component**. 
+
 ![alt text](/build/landingsearch.png)
+
 * **Artsy Results Component**. 
+
 ![alt text](/build/artsyimages.png)
-* **Artbeat Events Component with Google Map**. 
+
+* **Artbeat Events Component with Google Map**.
+ 
 ![alt text](/build/artbeatevents.png)
 
 ## Reach Goals

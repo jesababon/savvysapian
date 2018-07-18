@@ -61,17 +61,8 @@ class Events extends Component {
 
 render() {
 return (
-      <div classname="EventContainer">
-      {console.log(this.state)}
-      
-      {/* {console.log('look for lat',this.state.events.map((event, index) =>{
-        const geoArray = [];
-        geoArray.push(event.Latitude, event.Longitude);
-        return geoArray
-        })
-        )
-        } */}
-        
+      <div className="EventsContainer">
+      {/* {console.log(this.state.events)} */}
       
               <div className="Map">
                 <EventMap 
