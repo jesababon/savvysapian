@@ -18,6 +18,14 @@ https://savvysapian.herokuapp.com/
 ## MVP
 - The MVP allows users to find artworks and events near their geolocation.
 
+## WireFrames
+* **Landing Page with Search Component**. 
+![alt text](/build/landingsearch.png)
+* **Artsy Results Component**. 
+![alt text](/build/artsyimages.png)
+* **Artbeat Events Component with Google Map**. 
+![alt text](/build/artbeatevents.png)
+
 ## Reach Goals
 - MeetUp and GoogleCalendar API integration.
 - Event notifications as a React Native app.

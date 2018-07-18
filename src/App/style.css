@@ -2,10 +2,10 @@ header{
     position:fixed;
     top:0;
     overflow: hidden;
-    /* z-index: 4; */
+    z-index: 4;
     width: 100%;
-    margin: 0 0 5% 0;
-    /* background-color: black; */
+    margin: 0 0 1% 0;
+    background-color: black;
     padding: 3% 0;
 }
 
@@ -16,19 +16,14 @@ header{
   font-family: 'Jura', sans-serif;
 }
 
-nav {
-  text-align: center;
-  padding: 0 0 5% 0;
-}
-
 body {
   position: relative;
-  top: 10px;
+  top: 10%;
   text-align: left;
   padding: 2%;
   background-color: black;
   background-image: url('/paintchalk.jpeg');
-  background-size: stretch;
+  background-size: fill;
   background-repeat: no-repeat;
   /* height: 100%; */
 }
@@ -73,6 +68,11 @@ image:hover {
   transform: scale(1.5);
 }
 
+/* .ResultsContainer {
+  height: 84vw;
+  text-align: center;
+} */
+
 .ResultsDiv{
     display: flex;
     flex-flow: row nowrap;
@@ -99,12 +99,6 @@ image:hover {
     flex-direction: row;
     text-align: center;
     /* height: auto; */
-
-}
-
-.ResultsContainer{
-  height: 84vw;
-      text-align: center;
 
 }
 
@@ -183,12 +177,16 @@ input[type=text]:focus {
 
 @media screen and (max-width: 600px) {
 .ResultsDiv {
-  display: grid;
-  overflow: auto;
-  text-align: left;
-  align-items: left;
-  justify-content: left;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 
+}
+
+.Events {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 
   input[type=text] {
