@@ -26,8 +26,8 @@ class EventMap extends Component {
   
   static defaultProps = {
     center: {
-      lat: 40.744086,
-      lng: -73.98770
+      lat: 40.7143,
+      lng: -74.0060
     },
     zoom: 12,
     myCoords: { lat: 40.7128, lng: -74.00 }
