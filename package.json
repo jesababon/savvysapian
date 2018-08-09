@@ -8,13 +8,14 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "google-map-react": "^1.0.5",
     "google-maps-react": "^2.0.2",
     "node-fetch": "^2.1.2",
-    "nodemon": "^1.18.2",
+    "nodemon": "^1.18.3",
     "pg-monitor": "^1.0.0",
     "pg-promise": "^8.4.5",
     "react": "^16.4.1",
@@ -29,6 +30,7 @@
     "superagent": "^3.8.3",
     "traverson": "^6.0.3",
     "traverson-hal": "^6.0.0",
+    "vue-resource": "^1.5.1",
     "xml2js": "^0.4.19"
   },
   "scripts": {

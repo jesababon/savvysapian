@@ -7,7 +7,7 @@ import UserLocation from "../UserLocation";
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMzE1MzAwNSwiaWF0IjoxNTMyNTQ4MjA1LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI1OGQ0NmQ4ZDNiYTkzNTZkNTZiNzIxIn0.7le1H-A_BuUlm6Z5_55lp257IGotH0zdX9lPmNL-YIg';
+const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzNDQ0Mzk1MywiaWF0IjoxNTMzODM5MTUzLCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI2Yzg3MzFjNTk5ZDcxZWRlNzY0NzY1In0.4haFiBBn3ZdnQbkYW6zrQnGKKoVca8TMkqY-dY6AASU';
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
@@ -32,6 +32,11 @@ componentWillMount(){
       headers: {
         'X-Xapp-Token': xappToken,
         'Accept': 'application/vnd.artsy-v2+json'
+        // 'Access-Control-Allow-Origin': 'https://api.artsy.net/api',
+        // 'Access-Control-Allow-Methods': 'GET',
+        // 'preflightContinue': false,
+        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, X-Requested-With, Content-Type, Accept, Authorization',
+
       }
     })
     .withTemplateParameters({

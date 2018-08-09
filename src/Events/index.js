@@ -31,7 +31,15 @@ class Events extends Component {
 
 
 
-    axios.get(XML_URL)
+    axios.get(XML_URL
+      , {
+        headers: {
+          'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin, X-Requested-With',
+          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+          'Access-Control-Allow-Origin': '*',
+          'X-Requested-With': 'XMLHttpRequest'
+        }}
+    )
       .then(function (response) {
         // console.log(response.request.responseURL);
         
