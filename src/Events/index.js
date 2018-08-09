@@ -36,7 +36,7 @@ class Events extends Component {
         headers: {
           'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin, X-Requested-With',
           'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'http://localhost:3000, http://localhost:4567, *:*',
           'X-Requested-With': 'XMLHttpRequest'
         }}
     )

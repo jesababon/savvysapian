@@ -12,11 +12,11 @@ app.use("/", express.static("./build/"));
 const jsonParser = bodyParser.json();
 app.use(jsonParser);
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // app.use(cors({
 //   'allowedHeaders': ['sessionId', 'Content-Type'],
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 //   'preflightContinue': false
 // }));
 
-require('./router/index')(app);
+// require('./router/index')(app);
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567
 const PORT = process.env.PORT || 4567;
