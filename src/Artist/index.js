@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 const traverson = require("traverson");
 const JsonHalAdapter = require("traverson-hal"); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzMjM1NzQ1NywiaWF0IjoxNTMxNzUyNjU3LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWI0Y2IwZDFlMDFlN2IwMDFmMjllY2JlIn0.jn-RY4N6BH64faWWKqJZBdXyjipwUnsYVTh61aQYy8c';
+const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTU0OTkwNzUzNSwiaWF0IjoxNTQ5MzAyNzM1LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWM1ODdiY2Y4ZWQ5MmY1NWY4ODhjYjQwIn0.mYJFLYKyyM08wncmevrxvUvZHTCU4V4_27tkjw0u1mM';
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 class Artist extends Component {
@@ -26,11 +26,16 @@ class Artist extends Component {
       .withRequestOptions({
         headers: {
           "X-Xapp-Token": xappToken,
-          Accept: "application/vnd.artsy-v2+json"
+          Accept: "application/vnd.artsy-v2+json",
+        // RetryAfter: 120,
+        // 'Access-Control-Allow-Origin': 'https://api.artsy.net/api',
+        // '\Access-Control-Allow-Methods': 'GET',
+        // 'preflightContinue': false,
+        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, X-Requested-With, Content-Type, Accept, Authorization',
         }
       })
       .getResource(function(error, data) {
-        //    console.log(data);
+           console.log(data);
 
         if (data !== undefined) {
           //    const shows = data._embedded.results.map(result => {
@@ -63,7 +68,7 @@ class Artist extends Component {
     <div className="ArtistDetails">
         {/* <p>Artist Id: {this.state.id} </p> */}
         <p>
-          <a href={`https://en.wikipedia.org/wiki/${this.state.name}`} target="_blank">
+          <a href={`https://en.wikipedia.org/wiki/${this.state.name}`} target="_blank" rel="noopener noreferrer">
             <img src={this.state.image} alt="" title={this.state.name}/>
           </a>
         </p>
