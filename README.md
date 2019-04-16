@@ -13,7 +13,7 @@ I plan to include User comments and OAuth.
 
 
 * **Heroku Deployment** 
-https://savvysapian.herokuapp.com/
+UPDATE: Previously deployed on Heroku. Discontinued updating due to various API re$trictions. Would need constant monitoring to maintain this app.
 
 ## MVP
 - The MVP allows users to find artworks and events near their geolocation.
