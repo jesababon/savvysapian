@@ -7,7 +7,7 @@ import UserLocation from "../UserLocation";
 //these should be made into a Traverson Helpers Component
 const traverson = require('traverson');
 const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTU0OTkwNzUzNSwiaWF0IjoxNTQ5MzAyNzM1LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWM1ODdiY2Y4ZWQ5MmY1NWY4ODhjYjQwIn0.mYJFLYKyyM08wncmevrxvUvZHTCU4V4_27tkjw0u1mM';
+const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTU1NjAzODc5MiwiaWF0IjoxNTU1NDMzOTkyLCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWNiNjBhMDgwZjhmYzIzMzgyNmZmZDdhIn0.XRmuq0rUnq4okb_FPSMQDLGbNb4Z6msyVowMu_OPS_4';
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
