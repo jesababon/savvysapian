@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router} from "react-router-dom";
 import "./style.css";
-import Search from "../Search";
-// import TestArtsPage from "../TestArtsPage";
+// import Search from "../Search";
+import TestArtsPage from "../TestArtsPage";
 
 
 class App extends Component {
@@ -17,7 +17,8 @@ class App extends Component {
         </header>
         <div className="appBody">
         <Router>
-        <Search />
+        {/* <Search /> */}
+        <TestArtsPage />
         {/* <Route path="/" exact component={TestArtsPage}/> */}
         </Router>
         </div>

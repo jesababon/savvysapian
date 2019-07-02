@@ -5,9 +5,9 @@ import UserLocation from "../UserLocation";
 
 
 //these should be made into a Traverson Helpers Component
-const traverson = require('traverson');
-const JsonHalAdapter = require('traverson-hal'); //plugin adds support for hypertext application language
-const xappToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTU1NjAzODc5MiwiaWF0IjoxNTU1NDMzOTkyLCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWNiNjBhMDgwZjhmYzIzMzgyNmZmZDdhIn0.XRmuq0rUnq4okb_FPSMQDLGbNb4Z6msyVowMu_OPS_4';
+const traverson= require('traverson');
+const JsonHalAdapter= require('traverson-hal'); //plugin adds support for hypertext application language
+const token= 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTU2MjcwNDE4NywiaWF0IjoxNTYyMDk5Mzg3LCJhdWQiOiI1YjNlZjQyZTEzOWIyMTEzOGM2YTcyMTEiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWQxYmJlYmIzYTFiNDQ0NTgwZDE0NjBjIn0.OjydMF36kFs2Rh05vuvQvale56KH4m0cwpt1yo8gWgs';
 
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
 const api = traverson.from('https://api.artsy.net/api').jsonHal();
@@ -23,28 +23,26 @@ class ArtResults extends Component {
 
 componentWillMount(){
   let currentComponent = this;
-  // console.log('state:', this.state);
+  console.log('state:', this.state);
   // console.log('props:', this.props.query.search);
   
  api.newRequest()
     .follow('search')
     .withRequestOptions({
       headers: {
-        'X-Xapp-Token': xappToken,
+        'X-Xapp-Token': token,
         'Accept': 'application/vnd.artsy-v2+json'
         // 'Access-Control-Allow-Origin': 'https://api.artsy.net/api',
         // 'Access-Control-Allow-Methods': 'GET',
         // 'preflightContinue': false,
         // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, X-Requested-With, Content-Type, Accept, Authorization',
-
       }
     })
     .withTemplateParameters({
       q: this.props.query.search
-      // q: 'keever' //has shows
     })
     .getResource(function (error, data) {
-      // console.log('get resource data',data);
+      console.log('get resource data',data);
       
       // const shows= data._embedded.results.map( result =>{
       //   // console.log(shows);
