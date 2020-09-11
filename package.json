@@ -18,7 +18,7 @@
     "fstream": "^1.0.12",
     "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "nodemon": "^1.19.1",
     "npm-install-peers": "^1.2.1",
     "pg-monitor": "^1.1.0",
