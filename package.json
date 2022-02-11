@@ -4,7 +4,7 @@
   "proxy": "http://localhost:4567",
   "private": true,
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "ajv-keywords": "^3.4.0",
     "axios": "^0.18.1",
     "bluebird": "^3.5.5",
