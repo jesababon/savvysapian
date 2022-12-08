@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fstream": "^1.0.12",
     "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
